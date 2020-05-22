@@ -1,0 +1,34 @@
+<div class="grd">
+    <div class="grd-row">
+      <div class="grd-row-col-2">
+          <h1>🐱 Gatos 🐱</h1>
+          <<form (ngSubmit)="newUser(newUserForm.value)" [formGroup]="newUserForm">
+            <input type="hidden" formControlName="id">
+          
+            <label for="username">Nombre</label>
+            <input type="text" formControlName="username">
+          
+            <label for="url_img">Imagen</label>
+            <input type="url" formControlName="url">
+          
+            <input type="submit" class="btn--blue btn--add" [disabled]="!newUserForm.valid" value="Agregar">
+          </form>
+      </div>
+      <div class="grd-row-col-4">
+        <div class="cats_container">
+          <div class="media" *ngFor="let user of users">
+            <div class="media-figure">
+              <img [src]="user.data.url">
+            </div>
+            <div class="media-body">
+              <p>{{user.data.nombre}}</p>
+              <div class="btn--group">
+                <button class="btn--green btn--s btn1">Editar</button>
+                <button class="btn--red btn--s btn2">Eliminar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
