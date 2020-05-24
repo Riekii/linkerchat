@@ -1,34 +1,66 @@
-<div class="grd">
-    <div class="grd-row">
-      <div class="grd-row-col-2">
-          <h1>🐱 Gatos 🐱</h1>
-          <<form (ngSubmit)="newUser(newUserForm.value)" [formGroup]="newUserForm">
-            <input type="hidden" formControlName="id">
-          
-            <label for="username">Nombre</label>
-            <input type="text" formControlName="username">
-          
-            <label for="url_img">Imagen</label>
-            <input type="url" formControlName="url">
-          
-            <input type="submit" class="btn--blue btn--add" [disabled]="!newUserForm.valid" value="Agregar">
-          </form>
-      </div>
-      <div class="grd-row-col-4">
-        <div class="cats_container">
-          <div class="media" *ngFor="let user of users">
-            <div class="media-figure">
-              <img [src]="user.data.url">
-            </div>
-            <div class="media-body">
-              <p>{{user.data.nombre}}</p>
-              <div class="btn--group">
-                <button class="btn--green btn--s btn1">Editar</button>
-                <button class="btn--red btn--s btn2">Eliminar</button>
-              </div>
+<!-- <div class="grd">
+  <div class="grd-row">
+    <div class="grd-row-col-2">
+      <h1>🐱 Gatos 🐱</h1>
+      <form (ngSubmit)="newUser(newUserForm.value)" [formGroup]="newUserForm">
+        <input type="hidden" formControlName="id">
+
+        <label for="username">Nombre</label>
+        <input type="text" formControlName="username">
+
+        <label for="password">Contraseña</label>
+        <input type="password" formControlName="password">
+
+        <label for="imagen">Imagen</label>
+        <input type="imagen" formControlName="imagen">
+
+
+
+        <input type="submit" class="btn--blue btn--add" [disabled]="!newUserForm.valid" value="Agregar">
+      </form>
+    </div>
+    <div class="grd-row-col-4">
+      <div class="cats_container">
+        <div class="media" *ngFor="let user of users">
+          <div class="media-figure">
+            <img height="50px" width="auto" [src]="user.data.imagen">
+          </div>
+          <div class="media-body">
+            <p>{{user.data.username}}</p>
+            <p>{{user.data.password}}</p>
+            <div class="btn--group">
+              <button class="btn--green btn--s btn1">Editar</button>
+              <button class="btn--red btn--s btn2">Eliminar</button>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div> -->
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-0 col-md-1 col-lg-2"></div>
+    <div class="col-12 col-md-10 col-lg-8">
+      <form (ngSubmit)="newUser(newUserForm.value)" [formGroup]="newUserForm">
+        <input type="hidden" formControlName="id">
+
+        <img id="userdefault" class="img" src="../../../../assets/imagenes/createuser/userdefault.png">
+
+        <input class="form-control" type="text" formControlName="username" placeholder="Nombre de usuario">
+
+        <input class="form-control" type="password" formControlName="password" placeholder="Contraseña">
+
+        <input class="form-control" type="imagen" formControlName="imagen" placeholder="Imagen de perfil (URL)">
+
+        <input type="submit" class="btn btn-outline-success" [disabled]="!newUserForm.valid" value="Registrarse">
+
+        <div *ngIf="introducido === true">
+          Usuario  insertado con éxito
+        </div>
+      </form>
+    </div>
+    <div class="col-0 col-md-1 col-lg-2"></div>
+  </div>
+</div>

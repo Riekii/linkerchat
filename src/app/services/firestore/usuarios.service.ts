@@ -12,7 +12,11 @@ export class UsuariosService {
   public coleccion = 'users'
     
   //Crea un nuevo usurios
-  public createUser(data: {username: string, url: string}) {
+  public createUser(data: {
+    username: string, 
+    imagen: string,
+    password: string
+  }) {
     return this.firestore.collection(this.coleccion).add(data);
   }
   //Obtiene un usuario

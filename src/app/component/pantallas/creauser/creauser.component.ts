@@ -12,14 +12,17 @@ export class CreauserComponent implements OnInit {
   // LISTADO DE USUARIOS
   public users = [];
 
+  // NTROD
   // INTRODUCIR NUEVO USUARIO
   public documentId = null;
   public currentStatus = 1;
   public newUserForm = new FormGroup({
     username: new FormControl('', Validators.required),
-    url: new FormControl('', Validators.required),
+    imagen: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required),
     id: new FormControl('')
   });
+  public introducido: boolean;
 
   constructor(
     private firestoreService: UsuariosService
@@ -27,10 +30,13 @@ export class CreauserComponent implements OnInit {
 
   ngOnInit() {
 
+  // NTROD
     this.newUserForm.setValue({
       id: '',
       username: '',
-      url: ''
+      imagen: '',
+      password: ''
+
     });
 
     this.firestoreService.getUsers().subscribe((userSnapshot) => {
@@ -48,14 +54,19 @@ export class CreauserComponent implements OnInit {
   public newUser(form, documentId = this.documentId) {
     if (this.currentStatus == 1) {
       let data = {
+        // NTROD
         username: form.username,
-        url: form.url
+        imagen: form.imagen,
+        password: form.password
       }
 
       this.firestoreService.createUser(data).then(() => {
+        this.introducido = true;
         this.newUserForm.setValue({
+          // NTROD
           username: '',
-          url: '',
+          imagen: '',
+          password: '',
           id: ''
         });
       }, (error) => {
@@ -64,14 +75,17 @@ export class CreauserComponent implements OnInit {
     } else {
       let data = {
         username: form.username,
-        url: form.url
+        imagen: form.imagen
       }
 
       this.firestoreService.updateUser(documentId, data).then(() => {
         this.currentStatus = 1;
+
         this.newUserForm.setValue({
+          // NTROD
           username: '',
-          url: '',
+          imagen: '',
+          password: '',
           id: ''
         });
       }, (error) => {
