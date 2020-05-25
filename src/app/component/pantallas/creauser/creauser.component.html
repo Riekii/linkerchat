@@ -43,23 +43,37 @@
   <div class="row">
     <div class="col-0 col-md-1 col-lg-2"></div>
     <div class="col-12 col-md-10 col-lg-8">
-      <form (ngSubmit)="newUser(newUserForm.value)" [formGroup]="newUserForm">
+      <form *ngIf="!introducido" (ngSubmit)="newUser(newUserForm.value)" [formGroup]="newUserForm">
         <input type="hidden" formControlName="id">
-
-        <img id="userdefault" class="img" src="../../../../assets/imagenes/createuser/userdefault.png">
-
+        <img id="userdefault" class="img" src="{{ imagen }}">
+        
         <input class="form-control" type="text" formControlName="username" placeholder="Nombre de usuario">
-
+        <input class="form-control" type="text" formControlName="mail" placeholder="E-mail">
         <input class="form-control" type="password" formControlName="password" placeholder="Contraseña">
+        <input id="imagen" class="form-control" type="text" formControlName="imagen" placeholder="Imagen de perfil (URL)" (keyup)="onKeyup($event)">
+        
+        <!-- <input class="form-control" type="text" formControlName="estilofondo" placeholder="Imagen de perfil (URL)"> -->
+        <!-- <input class="form-control" type="text" formControlName="colortexto" placeholder="Imagen de perfil (URL)">
+        <input class="form-control" type="text" formControlName="colorfondo" placeholder="Imagen de perfil (URL)"> -->
 
-        <input class="form-control" type="imagen" formControlName="imagen" placeholder="Imagen de perfil (URL)">
+        <!-- <div class="form-check">
+          <label class="form-check-label" for="estilofondo">
+            Estilo de fondo
+          </label>
+          <input class="form-check-input" type="radio" name="exampleRadios" id="estilofondo" value="1" checked>
+        </div> -->
 
         <input type="submit" class="btn btn-outline-success" [disabled]="!newUserForm.valid" value="Registrarse">
-
-        <div *ngIf="introducido === true">
-          Usuario  insertado con éxito
-        </div>
       </form>
+
+      <div *ngIf="introducido === true">
+        Usuario insertado con éxito
+      </div>
+
+      <div *ngIf="introducido === false">
+        Usuario insertado con éxito
+      </div>
+
     </div>
     <div class="col-0 col-md-1 col-lg-2"></div>
   </div>

@@ -12,14 +12,23 @@ export class CreauserComponent implements OnInit {
   // LISTADO DE USUARIOS
   public users = [];
 
+  public imagen = '../../../../assets/imagenes/createuser/userdefault.png';
+
   // NTROD
-  // INTRODUCIR NUEVO USUARIO
   public documentId = null;
   public currentStatus = 1;
   public newUserForm = new FormGroup({
+
     username: new FormControl('', Validators.required),
     imagen: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
+    mail: new FormControl('', Validators.required),
+    
+
+    // estilofondo: new FormControl('', Validators.required),
+    // colortexto: new FormControl('', Validators.required),
+    // colorfondo: new FormControl('', Validators.required),
+
     id: new FormControl('')
   });
   public introducido: boolean;
@@ -33,9 +42,15 @@ export class CreauserComponent implements OnInit {
   // NTROD
     this.newUserForm.setValue({
       id: '',
+
       username: '',
       imagen: '',
-      password: ''
+      password: '',
+      mail: '',
+
+      // estilofondo: 0,
+      // colortexto: 0,
+      // colorfondo: 0
 
     });
 
@@ -57,7 +72,14 @@ export class CreauserComponent implements OnInit {
         // NTROD
         username: form.username,
         imagen: form.imagen,
-        password: form.password
+        password: form.password,
+        mail: form.mail
+
+        // personalizacion: {
+        //   estilofondo: form.estilofondo,
+        //   colortexto: form.colortexto,
+        //   colorfondo: form.colorfondo
+        // }
       }
 
       this.firestoreService.createUser(data).then(() => {
@@ -67,9 +89,16 @@ export class CreauserComponent implements OnInit {
           username: '',
           imagen: '',
           password: '',
+          mail: '',
+
+          // estilofondo: 0,
+          // colortexto: 0,
+          // colorfondo: 0,
+
           id: ''
         });
       }, (error) => {
+        this.introducido = false;
         console.error(error);
       });
     } else {
@@ -86,6 +115,14 @@ export class CreauserComponent implements OnInit {
           username: '',
           imagen: '',
           password: '',
+          mail: '',
+
+          // personalizacion: {
+          //   estilofondo: form.estilofondo,
+          //   colortexto: form.colortexto,
+          //   colorfondo: form.colorfondo
+          // },
+
           id: ''
         });
       }, (error) => {
@@ -105,6 +142,13 @@ export class CreauserComponent implements OnInit {
       });
       editSubscribe.unsubscribe();
     });
+  }
+
+  public onKeyup() {
+    // TODO SOLUCIONAR ERROR
+    const imgurl:string = document.getElementById('imagen').value;
+
+    this.imagen = imgurl;
   }
   
 }
