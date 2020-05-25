@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { UsuariosService } from '../../../services/firestore/usuarios.service'
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FallbackimagesDirective } from '../../../directives/fallbackimages.directive';

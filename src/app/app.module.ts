@@ -15,14 +15,16 @@ import { CreauserComponent } from './component/pantallas/creauser/creauser.compo
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FallbackimagesDirective } from './directives/fallbackimages.directive'
+import { FallbackimagesDirective } from './directives/fallbackimages.directive';
+import { LoginComponent } from './component/pantallas/login/login.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     CreauserComponent,
-    FallbackimagesDirective
+    FallbackimagesDirective,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
