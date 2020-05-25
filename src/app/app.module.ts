@@ -14,13 +14,15 @@ import { CreauserComponent } from './component/pantallas/creauser/creauser.compo
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FallbackimagesDirective } from './directives/fallbackimages.directive'
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    CreauserComponent
+    CreauserComponent,
+    FallbackimagesDirective
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [FallbackimagesDirective],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

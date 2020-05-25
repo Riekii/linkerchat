@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { UsuariosService } from '../../../services/firestore/usuarios.service'
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FallbackimagesDirective } from '../../../directives/fallbackimages.directive';
 
 @Component({
   selector: 'app-creauser',
@@ -34,7 +35,8 @@ export class CreauserComponent implements OnInit {
   public introducido: boolean;
 
   constructor(
-    private firestoreService: UsuariosService
+    private firestoreService: UsuariosService,
+    public FallbackimagesDirective: FallbackimagesDirective
   ) { }
 
   ngOnInit() {
@@ -144,11 +146,22 @@ export class CreauserComponent implements OnInit {
     });
   }
 
-  public onKeyup() {
-    // TODO SOLUCIONAR ERROR
-    const imgurl:string = document.getElementById('imagen').value;
+  // IMAGEN
 
-    this.imagen = imgurl;
+  public imagenVacia(event) {
+    // TODO SOLUCIONAR ERROR
+    const imgelemento = document.getElementById('userdefault'); 
+    const imgurl:any = event.target.value;
+
+    if (imgurl !== '' ){
+      this.imagen = imgurl;
+    }
+    else{
+      this.imagen = '../../../../assets/imagenes/createuser/userdefault.png';
+    }
+  }
+  public error(){
+    console.log('lol')
   }
   
 }

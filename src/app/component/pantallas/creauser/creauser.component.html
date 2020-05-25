@@ -45,12 +45,12 @@
     <div class="col-12 col-md-10 col-lg-8">
       <form *ngIf="!introducido" (ngSubmit)="newUser(newUserForm.value)" [formGroup]="newUserForm">
         <input type="hidden" formControlName="id">
-        <img id="userdefault" class="img" src="{{ imagen }}">
+      <img id="userdefault" class="img" src="{{ imagen }}" default="../../../../assets/imagenes/createuser/userdefault.png">
         
         <input class="form-control" type="text" formControlName="username" placeholder="Nombre de usuario">
         <input class="form-control" type="text" formControlName="mail" placeholder="E-mail">
         <input class="form-control" type="password" formControlName="password" placeholder="Contraseña">
-        <input id="imagen" class="form-control" type="text" formControlName="imagen" placeholder="Imagen de perfil (URL)" (keyup)="onKeyup($event)">
+        <input id="imagen" class="form-control" type="text" formControlName="imagen" placeholder="Imagen de perfil (URL)" (keyup)="imagenVacia($event)" >
         
         <!-- <input class="form-control" type="text" formControlName="estilofondo" placeholder="Imagen de perfil (URL)"> -->
         <!-- <input class="form-control" type="text" formControlName="colortexto" placeholder="Imagen de perfil (URL)">
