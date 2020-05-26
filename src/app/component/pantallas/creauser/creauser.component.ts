@@ -1,6 +1,6 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UsuariosService } from '../../../services/firestore/usuarios.service'
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, SelectMultipleControlValueAccessor } from '@angular/forms';
 import { FallbackimagesDirective } from '../../../directives/fallbackimages.directive';
 
 @Component({
@@ -13,7 +13,8 @@ export class CreauserComponent implements OnInit {
   // LISTADO DE USUARIOS
   public users = [];
 
-  public imagen = '../../../../assets/imagenes/createuser/userdefault.png';
+  public imagensrc = '../../../../assets/imagenes/createuser';
+  public imagen = this.imagensrc + 'userdefault.png'
 
   // NTROD
   public documentId = null;
@@ -24,7 +25,7 @@ export class CreauserComponent implements OnInit {
     imagen: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
     mail: new FormControl('', Validators.required),
-    
+
 
     // estilofondo: new FormControl('', Validators.required),
     // colortexto: new FormControl('', Validators.required),
@@ -41,7 +42,7 @@ export class CreauserComponent implements OnInit {
 
   ngOnInit() {
 
-  // NTROD
+    // NTROD
     this.newUserForm.setValue({
       id: '',
 
@@ -53,7 +54,6 @@ export class CreauserComponent implements OnInit {
       // estilofondo: 0,
       // colortexto: 0,
       // colorfondo: 0
-
     });
 
     this.firestoreService.getUsers().subscribe((userSnapshot) => {
@@ -150,18 +150,18 @@ export class CreauserComponent implements OnInit {
 
   public imagenVacia(event) {
     // TODO SOLUCIONAR ERROR
-    const imgelemento = document.getElementById('userdefault'); 
-    const imgurl:any = event.target.value;
+    const imgelemento = document.getElementById('userdefault');
+    const imgurl: any = event.target.value;
 
-    if (imgurl !== '' ){
+    if (imgurl !== '') {
       this.imagen = imgurl;
     }
-    else{
+    else {
       this.imagen = '../../../../assets/imagenes/createuser/userdefault.png';
     }
   }
-  public error(){
-    console.log('lol')
+  public cambiarFondo() {
+    console.log('tocao');
   }
-  
+
 }

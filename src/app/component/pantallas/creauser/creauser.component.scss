@@ -19,7 +19,30 @@
     margin-bottom: 20px;
     margin-top: 20px;
     
+    max-height: 400px;
+}
 
-    max-width: auto;
-    height: 400px;
+#registrarse{
+    width: 150px;
+    height: 46px;
+
+    background-image: url(../../../../assets/botones/registrarse.png);
+    background-repeat: no-repeat;
+
+    margin-top: 60px;
+
+    animation: none;
+    transition: 0s;
+
+    &:hover{
+        background-size: cover;
+        width: 200px;
+        height: 60px;
+        margin-top: 50px;
+
+    background-image: url(../../../../assets/botones/registrarseanimado.gif);
+
+        animation: ease-in;
+        transition: 0.5s;
+    }
 }
