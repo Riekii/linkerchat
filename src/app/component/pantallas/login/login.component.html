@@ -11,6 +11,15 @@
           <input class="form-control" type="password" formControlName="password" placeholder="Contraseña">
           <input type="submit" class="btn btn-outline-primary" [disabled]="!loginUserForm.valid" value="Iniciar sesión"> 
   
+
+          <div *ngIf="loaded === true">
+            <div *ngFor="let user of users">
+              - {{ user.data.username }}-
+            </div>
+          </div>
+          <div *ngIf="loaded === false">
+            h
+          </div>
         </form>
   
         <!-- <div *ngIf="introducido === true">

@@ -19,16 +19,22 @@ export class UsuariosService {
   }) {
     return this.firestore.collection(this.coleccion).add(data);
   }
+
   //Obtiene un usuario
   public getUser(documentId: string) {
     return this.firestore.collection(this.coleccion).doc(documentId).snapshotChanges();
   }
+
   //Obtiene todos los usuarios
-  public getUsers() {
+  public getUsers(username) {
     return this.firestore.collection(this.coleccion).snapshotChanges();
   }
   //Actualiza un usuario
   public updateUser(documentId: string, data: any) {
     return this.firestore.collection(this.coleccion).doc(documentId).set(data);
   }
+
+
+  // Comprueba si hay usuarios con ese nombre
+
 }
