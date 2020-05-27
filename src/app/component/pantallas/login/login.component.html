@@ -9,17 +9,22 @@
           
           <input class="form-control" type="text" formControlName="username" placeholder="Nombre de usuario">
           <input class="form-control" type="password" formControlName="password" placeholder="Contraseña">
-          <input type="submit" class="btn btn-outline-primary" [disabled]="!loginUserForm.valid" value="Iniciar sesión"> 
-  
 
-          <div *ngIf="loaded === true">
+          <div *ngIf="loaded === true && goodlogin === true" class="goodlogin">
             <div *ngFor="let user of users">
-              - {{ user.data.username }}-
+              <p>Usuario logeado con éxito</p>
             </div>
           </div>
-          <div *ngIf="loaded === false">
-            h
+
+          <div *ngIf="loaded === true && goodlogin === false" class="badlogin">
+              <p>Usuario o contraseña fallida</p>
           </div>
+
+          <div *ngIf="loaded === false" class="loading">
+            <p>Cargando</p>
+          </div>
+
+          <input type="submit" class="btn btn-outline-primary" [disabled]="!loginUserForm.valid" value="Iniciar sesión"> 
         </form>
   
         <!-- <div *ngIf="introducido === true">

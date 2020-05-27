@@ -1,3 +1,17 @@
+.container-fluid{
+    min-height: 100vh;
+    .col-0{
+        // background: red; 
+       @media (max-width: 768px) {
+        height: auto;
+       }
+       @media (min-width: 769px) {
+        height: 100vh;
+       }
+        
+    }
+}
+
 .form-control{
     max-width: 300px;
     
@@ -19,7 +33,7 @@
     margin-bottom: 20px;
     margin-top: 20px;
     
-    max-height: 400px;
+    max-height: 46vh;
 }
 
 #registrarse{
@@ -34,10 +48,12 @@
     animation: none;
     transition: 0s;
 
+    margin-bottom: 20px;
+
     &:hover{
         background-size: cover;
         width: 200px;
-        height: 60px;
+        height: 61.3333333px;
         margin-top: 50px;
 
     background-image: url(../../../../assets/botones/registrarseanimado.gif);

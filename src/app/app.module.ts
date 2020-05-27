@@ -16,7 +16,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FallbackimagesDirective } from './directives/fallbackimages.directive';
-import { LoginComponent } from './component/pantallas/login/login.component'
+import { LoginComponent } from './component/pantallas/login/login.component';
+
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,10 @@ import { LoginComponent } from './component/pantallas/login/login.component'
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [FallbackimagesDirective],
+  providers: [
+    FallbackimagesDirective,
+    CookieService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

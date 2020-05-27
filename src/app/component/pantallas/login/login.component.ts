@@ -1,12 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UsuariosService } from '../../../services/firestore/usuarios.service'
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { FallbackimagesDirective } from '../../../directives/fallbackimages.directive';
-import { auth } from 'firebase/app';
-import { AngularFireAuth } from "@angular/fire/auth";
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { Router } from "@angular/router";
-import { Injectable, NgZone } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 
 
@@ -29,10 +25,12 @@ export class LoginComponent implements OnInit {
   public loaded: boolean;
 
   public imagen = '../../../../assets/imagenes/createuser/userdefault.png';
+  public goodlogin: boolean;
 
   constructor(
     private firestoreService: UsuariosService,
-
+    private cookieService: CookieService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -44,23 +42,37 @@ export class LoginComponent implements OnInit {
       password: ''
     });
 
-    this.loaded = false;
-
   }
 
-  public loginUser(username){
+  public loginUser(formData){
     this.loaded = false;
-    this.firestoreService.getUser(username.username).subscribe((userSnapshot) => {
+    this.firestoreService.getUser(formData.username, formData.password).subscribe((userSnapshot) => {
       this.users = [];
       userSnapshot.forEach((userData: any) => {
-        this.loaded = true;
         this.users.push({
           id: userData.payload.doc.id,
           data: userData.payload.doc.data()
         });
       })
-      console.log(this.users)
+      this.loginCookies(formData);
     });
+  }
+
+  public loginCookies(formData){
+    this.loaded = true;
+    if (this.users.length === 1){
+      this.goodlogin = true;
+
+      this.cookieService.set('myusername', formData.username );
+      this.cookieService.set('mypassword', formData.password );
+
+      setTimeout(() => {
+        this.router.navigate(['/creauser'])
+      }, 1000);
+    }
+    else{
+      this.goodlogin = false;
+    }
   }
 
 

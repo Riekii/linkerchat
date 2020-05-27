@@ -21,10 +21,13 @@ export class UsuariosService {
   }
 
   //Obtiene un usuario
-  public getUser(username: string) {
+  public getUser(username: string, password: string) {
     return this.firestore.collection(
       this.coleccion,
-     ref => ref.where('username', '==', username)
+      ref => ref
+      .where('username', '==', username)
+      .where('password', '==', password)
+      ,
       ).snapshotChanges();
   }
 
