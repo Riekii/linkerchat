@@ -133,18 +133,18 @@ export class CreauserComponent implements OnInit {
     }
   }
 
-  public editUser(documentId) {
-    let editSubscribe = this.firestoreService.getUser(documentId).subscribe((cat) => {
-      this.currentStatus = 2;
-      this.documentId = documentId;
-      this.newUserForm.setValue({
-        id: documentId,
-        nombre: cat.payload.data()['nombre'],
-        url: cat.payload.data()['url']
-      });
-      editSubscribe.unsubscribe();
-    });
-  }
+  // public editUser(documentId) {
+  //   let editSubscribe = this.firestoreService.getUser(documentId).subscribe((cat) => {
+  //     this.currentStatus = 2;
+  //     this.documentId = documentId;
+  //     this.newUserForm.setValue({
+  //       id: documentId,
+  //       nombre: cat.payload.data()['nombre'],
+  //       url: cat.payload.data()['url']
+  //     });
+  //     editSubscribe.unsubscribe();
+  //   });
+  // }
 
   // IMAGEN
 

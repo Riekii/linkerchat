@@ -49,9 +49,8 @@ export class LoginComponent implements OnInit {
   }
 
   public loginUser(username){
-    console.log(username)
     this.loaded = false;
-    this.firestoreService.getUsers(username).subscribe((userSnapshot) => {
+    this.firestoreService.getUser(username.username).subscribe((userSnapshot) => {
       this.users = [];
       userSnapshot.forEach((userData: any) => {
         this.loaded = true;
@@ -60,6 +59,7 @@ export class LoginComponent implements OnInit {
           data: userData.payload.doc.data()
         });
       })
+      console.log(this.users)
     });
   }
 

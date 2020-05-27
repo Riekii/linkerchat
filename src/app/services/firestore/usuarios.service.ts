@@ -21,13 +21,17 @@ export class UsuariosService {
   }
 
   //Obtiene un usuario
-  public getUser(documentId: string) {
-    return this.firestore.collection(this.coleccion).doc(documentId).snapshotChanges();
+  public getUser(username: string) {
+    return this.firestore.collection(
+      this.coleccion,
+     ref => ref.where('username', '==', username)
+      ).snapshotChanges();
   }
 
   //Obtiene todos los usuarios
-  public getUsers(username) {
+  public getUsers() {
     return this.firestore.collection(this.coleccion).snapshotChanges();
+    // , ref => ref.where('TransactionDate', '==', formatDate(new Date, 'yyyy/MM/dd', 'en'))
   }
   //Actualiza un usuario
   public updateUser(documentId: string, data: any) {
