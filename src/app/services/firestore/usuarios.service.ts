@@ -21,14 +21,23 @@ export class UsuariosService {
   }
 
   //Obtiene un usuario
-  public getUser(username: string, password: string) {
-    return this.firestore.collection(
-      this.coleccion,
-      ref => ref
-      .where('username', '==', username)
-      .where('password', '==', password)
-      ,
-      ).snapshotChanges();
+  public getUser(username: string, password?: string) {
+    if (password){
+      return this.firestore.collection(
+        this.coleccion,
+        ref => ref
+        .where('username', '==', username)
+        .where('password', '==', password)
+        ,
+        ).snapshotChanges();
+    }
+    else{
+      return this.firestore.collection(
+        this.coleccion,
+        ref => ref
+        .where('username', '==', username)
+        ).snapshotChanges();
+    }
   }
 
   //Obtiene todos los usuarios

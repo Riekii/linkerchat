@@ -34,14 +34,11 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
     this.loginUserForm.setValue({
       id: '',
-
       username: '',
       password: ''
     });
-
   }
 
   public loginUser(formData){
@@ -63,11 +60,11 @@ export class LoginComponent implements OnInit {
     if (this.users.length === 1){
       this.goodlogin = true;
 
-      this.cookieService.set('myusername', formData.username );
+      this.cookieService.set('myusername', formData.username , 90);
       this.cookieService.set('mypassword', formData.password );
 
       setTimeout(() => {
-        this.router.navigate(['/creauser'])
+        this.router.navigate(['/home'])
       }, 1000);
     }
     else{
