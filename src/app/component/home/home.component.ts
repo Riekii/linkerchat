@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit {
   public comprobarcookies(){
     if (this.cookieService.get('myusername')){
       this.myusername = this.cookieService.get('myusername');
+      console.log(this.myusername)
       this.loginUser();
     }
     else{
