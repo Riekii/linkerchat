@@ -14,7 +14,7 @@ export class CreauserComponent implements OnInit {
   public users = [];
 
   public imagensrc = '../../../../assets/imagenes/createuser';
-  public imagen = this.imagensrc + 'userdefault.png'
+  public imagen = this.imagensrc + 'userdefaultextra.png' 
 
   // NTROD
   public documentId = null;
@@ -34,6 +34,7 @@ export class CreauserComponent implements OnInit {
     id: new FormControl('')
   });
   public introducido: boolean;
+  seguridad: any;
 
   constructor(
     private firestoreService: UsuariosService,
@@ -157,11 +158,66 @@ export class CreauserComponent implements OnInit {
       this.imagen = imgurl;
     }
     else {
-      this.imagen = '../../../../assets/imagenes/createuser/userdefault.png';
+      this.imagen = '../../../../assets/imagenes/createuser/userdefaultextra.png';
     }
   }
-  public cambiarFondo() {
-    console.log('tocao');
+  public cambiarFondo(event, enter?) {
+
+    // SEGURIDAD DE LA CONTRASEÑA
+    const contrasena = event.target.value;
+    this.seguridad = 0;
+
+    if (contrasena.match(/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/))
+      {
+        this.seguridad = this.seguridad+1
+      }
+
+    if (contrasena.match(/[123456789]/))
+      {
+        this.seguridad = this.seguridad+1
+      }
+
+    if (contrasena.match(/[ABCDEFGHIJKLMNOPQRSTUVWXYZ]/))
+      {
+        this.seguridad = this.seguridad+1
+      }
+
+
+    console.log(this.seguridad)
+
+    const fright = document.getElementById('fuegorightimg')
+    const fleft = document.getElementById('fuegoleftimg')
+
+
+    if(contrasena !== ''){
+      fright.style.opacity = '1';
+      fleft.style.opacity = '1';
+    }
+    else{
+      fright.style.opacity = '0';
+      fleft.style.opacity = '0';
+    }
+
+    if (this.seguridad <= 0){
+      fright.style.width = '20%';
+      fleft.style.width = '20%';
+    }
+    if (this.seguridad === 1){
+      fright.style.width = '50%';
+      fleft.style.width = '50%';
+    }
+    if (this.seguridad === 2){
+      fright.style.width = '75%';
+      fleft.style.width = '75%';
+    }
+    if (this.seguridad === 3){
+      fright.style.width = '100%';
+      fleft.style.width = '100%';
+    }
+
+    
+
+
   }
 
 }

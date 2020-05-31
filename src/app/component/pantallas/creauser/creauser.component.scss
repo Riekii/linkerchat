@@ -1,5 +1,6 @@
 .container-fluid{
     min-height: 100vh;
+    background-color: #FCFCF9;
     .col-0{
         // background: red; 
        @media (max-width: 768px) {
@@ -61,4 +62,33 @@
         animation: ease-in;
         transition: 0.5s;
     }
+}
+
+#fuegoleft, #fuegoright{
+    padding: 0px;
+    img{
+        height: 100vh;
+        width: 0px;
+
+        opacity: 0;
+
+        animation: ease-in;
+        transition: 0.5s;
+        
+        position: absolute;
+        @media (max-width: 994px) {
+            display: none;
+        }
+
+    }
+    
+}
+#fuegoleft{
+    transform: rotate(180deg);
+    
+}
+
+#fuegoleftimg,
+#fuegorightimg{
+    right: 0;
 }
