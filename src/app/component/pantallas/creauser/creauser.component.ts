@@ -35,6 +35,8 @@ export class CreauserComponent implements OnInit {
   });
   public introducido: boolean;
   seguridad: any;
+  usersc: any;
+  public usuariousado: boolean;
 
   constructor(
     private firestoreService: UsuariosService,
@@ -57,19 +59,34 @@ export class CreauserComponent implements OnInit {
       // colorfondo: 0
     });
 
-    this.firestoreService.getUsers().subscribe((userSnapshot) => {
-      this.users = [];
+  }
+
+  public newUser(formData){
+    this.firestoreService.getUser(formData.username).subscribe((userSnapshot) => {
+      this.usersc = [];
       userSnapshot.forEach((userData: any) => {
-        this.users.push({
+        this.usersc.push({
           id: userData.payload.doc.id,
           data: userData.payload.doc.data()
         });
       })
     });
-
+   
+    setTimeout(() => {
+      if (this.usersc){
+        if (this.usersc.length === 0){
+          this.usuariousado = false;
+          this.insertUser(formData)  
+        }
+        else{
+          this.usuariousado = true;
+        }
+      }
+    }, 200);
+  
   }
 
-  public newUser(form, documentId = this.documentId) {
+  public insertUser(form, documentId = this.documentId) {
     if (this.currentStatus == 1) {
       let data = {
         // NTROD
@@ -84,6 +101,7 @@ export class CreauserComponent implements OnInit {
         //   colorfondo: form.colorfondo
         // }
       }
+
 
       this.firestoreService.createUser(data).then(() => {
         this.introducido = true;

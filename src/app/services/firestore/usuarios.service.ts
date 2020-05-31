@@ -32,10 +32,12 @@ export class UsuariosService {
         ).snapshotChanges();
     }
     else{
+      console.log(username)
       return this.firestore.collection(
         this.coleccion,
         ref => ref
         .where('username', '==', username)
+        ,
         ).snapshotChanges();
     }
   }
