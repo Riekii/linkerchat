@@ -205,15 +205,17 @@ export class CreauserComponent implements OnInit {
 
     const fright = document.getElementById('fuegorightimg')
     const fleft = document.getElementById('fuegoleftimg')
-
+    const bodycol = document.getElementById('bodycol')
 
     if(contrasena !== ''){
       fright.style.opacity = '1';
       fleft.style.opacity = '1';
+      // bodycol.style.backgroundImage = 'url(../../../../assets/imagenes/createuser/seguridaddela.gif)';
     }
     else{
       fright.style.opacity = '0';
       fleft.style.opacity = '0';
+      // bodycol.style.backgroundImage = 'none';
     }
 
     if (this.seguridad <= 0){
@@ -233,7 +235,9 @@ export class CreauserComponent implements OnInit {
       fleft.style.width = '100%';
     }
 
-    
+    setTimeout(() => {
+      
+    }, 3000);
 
 
   }

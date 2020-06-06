@@ -3,7 +3,7 @@
     <div id="fuegoleft" class="col-0 col-md-1 col-lg-3">
       <img id="fuegoleftimg" src="../../../../assets/imagenes/createuser/fuego.gif">
     </div>
-    <div class="col-12 col-md-10 col-lg-6">
+    <div id="bodycol" class="bodycol col-12 col-md-10 col-lg-6">
       <form *ngIf="!introducido" (ngSubmit)="newUser(newUserForm.value)" [formGroup]="newUserForm">
         <input type="hidden" formControlName="id">
       <img id="userdefault" class="img-fluid" src="{{ imagen }}" default="../../../../assets/imagenes/createuser/userdefaultextra.png">

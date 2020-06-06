@@ -19,6 +19,8 @@ import { FallbackimagesDirective } from './directives/fallbackimages.directive';
 import { LoginComponent } from './component/pantallas/login/login.component';
 
 import { CookieService } from 'ngx-cookie-service';
+import { ProfileComponent } from './component/pantallas/profile/profile.component';
+import { SearchComponent } from './component/pantallas/search/search.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { CookieService } from 'ngx-cookie-service';
     HomeComponent,
     CreauserComponent,
     FallbackimagesDirective,
-    LoginComponent
+    LoginComponent,
+    ProfileComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
