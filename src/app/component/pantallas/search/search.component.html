@@ -1,1 +1,30 @@
-<p>search works!</p>
+<div class="container-fluid">
+    <div class="row-flex">
+        <div class="col-12">
+            <h1>Búsqueda</h1>
+            <form *ngIf="!introducido" (ngSubmit)="newDM(newDMForm.value)" [formGroup]="newDMForm">
+                <input class="form-control form-control-lg" type="text" formControlName="username" placeholder="Nombre de usuario">
+                <input id="registrarse" type="submit" class="btn" [disabled]="!newDMForm.valid" value="">
+            </form>
+        </div>
+    </div>
+    <div class="containtable">
+        <table class="table table-dark">
+            <tr *ngFor="let user of usersc">
+                <td class="imgprof">
+                    <img class="img-responsive imagenperfil" *ngIf="user.data.imagen" src="{{user.data.imagen}}" />
+                    <img class="img-responsive imagenperfil" *ngIf="!user.data.imagen" src="../../../../assets/imagenes/createuser/userdefault.png" />
+                </td>
+                <td class="username">
+                    <p>{{ user.data.username }}</p>
+                </td>
+                <td class="mail">
+                    <p>{{ user.data.mail }}</p>
+                </td>
+                <td>
+                    <img class="img-responsive imagenperfil" src="../../../../assets/imagenes/createuser/userdefault.png" />
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

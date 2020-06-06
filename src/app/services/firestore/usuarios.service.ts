@@ -53,6 +53,15 @@ export class UsuariosService {
   }
 
 
-  // Comprueba si hay usuarios con ese nombre
+  // Mensajes
+
+  public collectiondm: string = 'mensajes'
+
+  public createDM(data: {
+    username: string,
+    myusername: string
+  }) {
+    return this.firestore.collection(this.coleccion).add(data);
+  }
 
 }
