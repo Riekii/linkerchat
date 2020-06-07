@@ -1,8 +1,12 @@
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="#">Logeado como: {{ myusername }}</a>
+  </nav>
+
 <div class="container-fluid">
     <div class="row-flex">
         <div class="col-12">
             <h1>Búsqueda</h1>
-            <form *ngIf="!introducido" (ngSubmit)="newDM(newDMForm.value)" [formGroup]="newDMForm">
+            <form *ngIf="!introducido" (ngSubmit)="cargaLista(newDMForm.value)" [formGroup]="newDMForm">
                 <input class="form-control form-control-lg" type="text" formControlName="username" placeholder="Nombre de usuario">
                 <input id="registrarse" type="submit" class="btn" [disabled]="!newDMForm.valid" value="">
             </form>
@@ -21,8 +25,8 @@
                 <td class="mail">
                     <p>{{ user.data.mail }}</p>
                 </td>
-                <td>
-                    <img class="img-responsive imagenperfil" src="../../../../assets/imagenes/createuser/userdefault.png" />
+                <td class="dm">
+                    <img (click)="newDM(user.data)" class="img-responsive imagenperfil" src="../../../../assets/imagenes/search/dm.png" />
                 </td>
             </tr>
         </table>

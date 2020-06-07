@@ -30,6 +30,8 @@ export class SearchComponent implements OnInit {
   });
   currentStatus: number;
   myusername: string;
+  userdm: any[];
+  usersDMs: any[];
 
   constructor(
     private firestoreService: UsuariosService,
@@ -53,8 +55,8 @@ export class SearchComponent implements OnInit {
     }
   }
 
-  // ABRIR NUEVO DM CON OTROS USUARIOS
-  public newDM(formData){
+  // Buscar usuarios
+  public cargaLista(formData){
     this.firestoreService.getUser(formData.username).subscribe((userSnapshot) => {
       this.usersc = [];
       userSnapshot.forEach((userData: any) => {
@@ -66,4 +68,39 @@ export class SearchComponent implements OnInit {
     });
   }
 
-}
+  // Abre DM
+
+  public newDM(datauser){
+
+    let dataCrearDM = {
+      username: datauser.username,
+      myusername: this.myusername
+    }
+
+    // Comprobar que los DMs no estén creados ya
+    this.firestoreService.getDMs(datauser, this.myusername).subscribe((userSnapshot) => {
+    this.usersDMs = [];
+    userSnapshot.forEach((userData: any) => {
+        this.usersDMs.push({
+          id: userData.payload.doc.id,
+          data: userData.payload.doc.data()
+        });
+    });
+  });
+
+  setTimeout(() => {
+    console.log(this.usersDMs)
+
+
+    if (this.usersDMs.length >= 1){
+      // Si ya hay datos
+    }
+    else{
+       // Crear los DMs entre ambos usuarios
+      this.firestoreService.createDM(dataCrearDM)
+    }
+  }, 400);
+
+  }
+
+  }

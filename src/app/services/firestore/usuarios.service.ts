@@ -54,14 +54,19 @@ export class UsuariosService {
 
 
   // Mensajes
+  public collectiodm: string = 'mensajes'
 
-  public collectiondm: string = 'mensajes'
+  public createDM(data: any) {
+    return this.firestore.collection(this.collectiodm).add(data);
+  }
 
-  public createDM(data: {
-    username: string,
-    myusername: string
-  }) {
-    return this.firestore.collection(this.coleccion).add(data);
+  public getDMs(data: any, myusername: string) {
+      return this.firestore.collection(
+        this.collectiodm,
+        ref => ref
+        .where('myusername', '==', myusername)
+        ,
+        ).snapshotChanges();
   }
 
 }
