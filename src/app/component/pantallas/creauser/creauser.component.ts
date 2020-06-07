@@ -20,17 +20,13 @@ export class CreauserComponent implements OnInit {
   public documentId = null;
   public currentStatus = 1;
   public newUserForm = new FormGroup({
-
     username: new FormControl('', Validators.required),
     imagen: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
     mail: new FormControl('', Validators.required),
-
-
     // estilofondo: new FormControl('', Validators.required),
     // colortexto: new FormControl('', Validators.required),
     // colorfondo: new FormControl('', Validators.required),
-
     id: new FormControl('')
   });
   public introducido: boolean;
@@ -75,14 +71,16 @@ export class CreauserComponent implements OnInit {
     setTimeout(() => {
       if (this.usersc){
         if (this.usersc.length === 0){
+          console.log('Usuario no encontrado');
           this.usuariousado = false;
           this.insertUser(formData)  
         }
         else{
+          console.log('Usuario encontrado');
           this.usuariousado = true;
         }
       }
-    }, 200);
+    }, 1000);
   
   }
 

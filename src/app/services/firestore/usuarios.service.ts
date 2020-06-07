@@ -32,7 +32,7 @@ export class UsuariosService {
         ).snapshotChanges();
     }
     else{
-      console.log(username)
+      console.log('buscando:' + username);
       return this.firestore.collection(
         this.coleccion,
         ref => ref
