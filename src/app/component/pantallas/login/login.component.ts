@@ -41,9 +41,26 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  public loginCookies(formData){
+    this.loaded = true;
+    if (this.users.length === 1){
+      this.goodlogin = true;
+
+      this.cookieService.set('myusername', formData.username , 90);
+      this.cookieService.set('mypassword', formData.password , 90);
+
+      setTimeout(() => {
+        this.router.navigate(['/home'])
+      }, 1000);
+    }
+    else{
+      this.goodlogin = false;
+    }
+  }
+
   public loginUser(formData){
     this.loaded = false;
-    this.firestoreService.getUser(formData.username, formData.password).subscribe((userSnapshot) => {
+    this.firestoreService.getUserPro(formData.username, formData.password).subscribe((userSnapshot) => {
       this.users = [];
       userSnapshot.forEach((userData: any) => {
         this.users.push({
@@ -53,23 +70,6 @@ export class LoginComponent implements OnInit {
       })
       this.loginCookies(formData);
     });
-  }
-
-  public loginCookies(formData){
-    this.loaded = true;
-    if (this.users.length === 1){
-      this.goodlogin = true;
-
-      this.cookieService.set('myusername', formData.username , 90);
-      this.cookieService.set('mypassword', formData.password );
-
-      setTimeout(() => {
-        this.router.navigate(['/home'])
-      }, 1000);
-    }
-    else{
-      this.goodlogin = false;
-    }
   }
 
 

@@ -20,7 +20,7 @@ export class UsuariosService {
     return this.firestore.collection(this.coleccion).add(data);
   }
 
-  //Obtiene un usuario
+  //Obtiene un usuario (sin profiiile)
   public getUser(username: string, password?: string) {
     if (password){
       return this.firestore.collection(
@@ -41,6 +41,19 @@ export class UsuariosService {
         ).snapshotChanges();
     }
   }
+
+    //Obtiene un usuario (cooon profiiile)
+    public getUserPro(username: string, password: string, mail?: string) {
+      if (password){
+        return this.firestore.collection(
+          this.coleccion,
+          ref => ref
+          .where('password', '==', password)
+          .where('username', '==', username)
+          ,
+          ).snapshotChanges();
+      }
+    }
 
   //Obtiene todos los usuarios
   public getUsers() {
