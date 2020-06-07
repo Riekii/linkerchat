@@ -21,6 +21,7 @@ import { LoginComponent } from './component/pantallas/login/login.component';
 import { CookieService } from 'ngx-cookie-service';
 import { ProfileComponent } from './component/pantallas/profile/profile.component';
 import { SearchComponent } from './component/pantallas/search/search.component';
+import { ChatComponent } from './component/pantallas/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { SearchComponent } from './component/pantallas/search/search.component';
     FallbackimagesDirective,
     LoginComponent,
     ProfileComponent,
-    SearchComponent
+    SearchComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

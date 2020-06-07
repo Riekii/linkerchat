@@ -60,26 +60,28 @@ export class UsuariosService {
     return this.firestore.collection(this.coleccion).snapshotChanges();
     // , ref => ref.where('TransactionDate', '==', formatDate(new Date, 'yyyy/MM/dd', 'en'))
   }
+
   //Actualiza un usuario
   public updateUser(documentId: string, data: any) {
     return this.firestore.collection(this.coleccion).doc(documentId).set(data);
   }
 
-
   // Mensajes
   public collectiodm: string = 'mensajes'
 
+  // Crear mensajes entre 2 usuarios
   public createDM(data: any) {
     return this.firestore.collection(this.collectiodm).add(data);
   }
 
-  public getDMs(data: any, myusername: string) {
+  // Comprubea que no haya Dms ya creados con ese usuario
+  public getDMs( myusername: string) {
       return this.firestore.collection(
         this.collectiodm,
         ref => ref
         .where('myusername', '==', myusername)
+        .where('username', '==', myusername)
         ,
         ).snapshotChanges();
   }
-
 }

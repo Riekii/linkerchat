@@ -5,6 +5,7 @@ import { CreauserComponent } from './component/pantallas/creauser/creauser.compo
 import { LoginComponent } from './component/pantallas/login/login.component';
 import { ProfileComponent } from './component/pantallas/profile/profile.component';
 import { SearchComponent } from './component/pantallas/search/search.component';
+import { ChatComponent } from './component/pantallas/chat/chat.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'search', component: SearchComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'chat', component: ChatComponent },
   { path: '', redirectTo: '/creauser', pathMatch: 'full' },
 ];
 
