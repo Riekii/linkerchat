@@ -125,4 +125,12 @@ export class UsuariosService {
         ).snapshotChanges();
     }
   }
+
+  public getMensajes(id){
+    return this.firestore.collection(
+      this.collectiodm
+      )
+      .doc(id)
+      .snapshotChanges();
+  }
 }

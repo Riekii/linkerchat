@@ -16,6 +16,7 @@ export class ChatComponent implements OnInit {
   usersDMs2: any[];
   usersDMs11: any[];
   usersDMs22: any[];
+  mensajes: any[];
 
   constructor(
     private firestoreService: UsuariosService,
@@ -100,6 +101,17 @@ export class ChatComponent implements OnInit {
               data: userData.payload.doc.data()
             });
         });
+      });
+    }
+
+    public envioID(id){
+      this.firestoreService.getMensajes(id).subscribe((userSnapshot) => {
+        this.mensajes = [];
+            this.mensajes.push({
+              data: userSnapshot.payload.data()
+            });
+        console.log(this.mensajes);
+        
       });
     }
 
