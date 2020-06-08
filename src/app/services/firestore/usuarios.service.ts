@@ -74,14 +74,55 @@ export class UsuariosService {
     return this.firestore.collection(this.collectiodm).add(data);
   }
 
-  // Comprubea que no haya Dms ya creados con ese usuario
-  public getDMs( myusername: string) {
+  // Comprobar que no haya mensajes anteriores
+  public getDMsUser(username: string,  myusername: string) {
+    return this.firestore.collection(
+      this.collectiodm,
+      ref => ref
+      .where('myusername', '==', myusername)
+      .where('username', '==', username)
+      ,
+      ).snapshotChanges();
+}
+
+  // Listados de dms de usuarios
+  public getDMs( myusername: string, username?) {
+    if (!username){
       return this.firestore.collection(
         this.collectiodm,
         ref => ref
         .where('myusername', '==', myusername)
+        ,
+        ).snapshotChanges();
+    }
+    else{
+      return this.firestore.collection(
+        this.collectiodm,
+        ref => ref
+        .where('myusername', '==', myusername)
+        .where('username', '==', username)
+        ,
+        ).snapshotChanges();
+    }
+      
+  }
+  public getDMs2( myusername: string, username?) {
+    if (!username){
+      return this.firestore.collection(
+        this.collectiodm,
+        ref => ref
         .where('username', '==', myusername)
         ,
         ).snapshotChanges();
+    }
+    else{
+      return this.firestore.collection(
+        this.collectiodm,
+        ref => ref
+        .where('myusername', '==', username)
+        .where('username', '==', myusername)
+        ,
+        ).snapshotChanges();
+    }
   }
 }

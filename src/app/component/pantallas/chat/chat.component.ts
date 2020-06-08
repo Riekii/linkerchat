@@ -13,6 +13,9 @@ export class ChatComponent implements OnInit {
   myusername: string;
   usersc: any[];
   usersDMs: any[];
+  usersDMs2: any[];
+  usersDMs11: any[];
+  usersDMs22: any[];
 
   constructor(
     private firestoreService: UsuariosService,
@@ -52,12 +55,20 @@ export class ChatComponent implements OnInit {
           data: userData.payload.doc.data()
         });
     });
+
+    this.firestoreService.getDMs2(this.myusername).subscribe((userSnapshot) => {
+      this.usersDMs2 = [];
+      userSnapshot.forEach((userData: any) => {
+          this.usersDMs2.push({
+            id: userData.payload.doc.id,
+            data: userData.payload.doc.data()
+          });
+      });
+    });
   });
 
   setTimeout(() => {
-    console.log(this.usersDMs)
-
-    if (this.usersDMs.length >= 1){
+    if (this.usersDMs.length >= 1 && this.usersDMs2.length >= 1){
       // Si ya hay datos
       console.log('Ya está creado');
     }
@@ -72,9 +83,19 @@ export class ChatComponent implements OnInit {
 
     public cargarDMs(){
       this.firestoreService.getDMs(this.myusername).subscribe((userSnapshot) => {
-        this.usersDMs = [];
+        this.usersDMs11 = [];
         userSnapshot.forEach((userData: any) => {
-            this.usersDMs.push({
+            this.usersDMs11.push({
+              id: userData.payload.doc.id,
+              data: userData.payload.doc.data()
+            });
+        });
+      }); 
+      
+      this.firestoreService.getDMs2(this.myusername).subscribe((userSnapshot) => {
+        this.usersDMs22 = [];
+        userSnapshot.forEach((userData: any) => {
+            this.usersDMs22.push({
               id: userData.payload.doc.id,
               data: userData.payload.doc.data()
             });

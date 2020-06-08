@@ -3,9 +3,25 @@
 </nav>
   
 <table class="table table-dark">
-    <tr *ngFor="let user of usersDMs">
+    <tr *ngFor="let user of usersDMs11">
+        <td>
+            <p>Por myusername</p>
+        </td>
         <td class="username">
-            <p>{{ user.data.username }}</p>
+            <p *ngIf="user.data.username === myusername">{{ user.data.myusername }}</p>
+            <p *ngIf="user.data.myusername === myusername">{{ user.data.username }}</p>
+        </td>
+        <td>
+            conversación iniciada
+        </td>
+    </tr> 
+    <tr *ngFor="let user of usersDMs22">
+        <td>
+            <p>Por username</p>
+        </td>
+        <td class="username">
+            <p *ngIf="user.data.username === myusername">{{ user.data.myusername }}</p>
+            <p *ngIf="user.data.myusername === myusername">{{ user.data.username }}</p>
         </td>
         <td>
             conversación iniciada

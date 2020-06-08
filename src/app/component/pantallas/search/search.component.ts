@@ -32,6 +32,7 @@ export class SearchComponent implements OnInit {
   myusername: string;
   userdm: any[];
   usersDMs: any[];
+  usersDMs2: any[];
 
   constructor(
     private firestoreService: UsuariosService,
@@ -88,15 +89,24 @@ export class SearchComponent implements OnInit {
     });
   });
 
+  this.firestoreService.getDMs2(this.myusername).subscribe((userSnapshot) => {
+    this.usersDMs2 = [];
+    userSnapshot.forEach((userData: any) => {
+        this.usersDMs.push({
+          id: userData.payload.doc.id,
+          data: userData.payload.doc.data()
+        });
+    });
+  });
+
   setTimeout(() => {
-    console.log(this.usersDMs)
-
-
-    if (this.usersDMs.length >= 1){
+    if (this.usersDMs.length >= 1 || this.usersDMs2.length >= 1){
       // Si ya hay datos
+      console.log('Ya hay datos')
     }
     else{
        // Crear los DMs entre ambos usuarios
+      console.log('No hay datos')
       this.firestoreService.createDM(dataCrearDM)
     }
   }, 400);

@@ -22,6 +22,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { ProfileComponent } from './component/pantallas/profile/profile.component';
 import { SearchComponent } from './component/pantallas/search/search.component';
 import { ChatComponent } from './component/pantallas/chat/chat.component';
+import { NavbarComponent } from './component/shared/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ChatComponent } from './component/pantallas/chat/chat.component';
     LoginComponent,
     ProfileComponent,
     SearchComponent,
-    ChatComponent
+    ChatComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
