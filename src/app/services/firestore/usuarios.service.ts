@@ -10,6 +10,8 @@ export class UsuariosService {
   ) {}
 
   public coleccion = 'users'
+  public collectiodm: string = 'conexiones'
+  public collectionmsg: string = 'mensajesall'
     
   //Crea un nuevo usurios
   public createUser(data: {
@@ -67,7 +69,6 @@ export class UsuariosService {
   }
 
   // Mensajes
-  public collectiodm: string = 'mensajes'
 
   // Crear mensajes entre 2 usuarios
   public createDM(data: any) {
@@ -83,7 +84,7 @@ export class UsuariosService {
       .where('username', '==', username)
       ,
       ).snapshotChanges();
-}
+    }
 
   // Listados de dms de usuarios
   public getDMs( myusername: string, username?) {
@@ -126,11 +127,32 @@ export class UsuariosService {
     }
   }
 
-  public getMensajes(id){
+  public envioIDService(id){
     return this.firestore.collection(
       this.collectiodm
       )
       .doc(id)
       .snapshotChanges();
   }
+
+  // Enviar mensaje
+  public sendMsg(data: {
+      id: string,
+      username: string,
+      mensaje: string
+  }){
+    return this.firestore.collection(this.collectionmsg).add(data);
+  }
+
+  // Recoger todos los mensajes donde el id es el id introducido
+  public getMsgAll(id) {
+    return this.firestore.collection(
+      this.collectionmsg,
+      ref => ref
+      .where('id', '==', id)
+      ,
+      ).snapshotChanges();
+    }
+
+
 }

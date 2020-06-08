@@ -16,7 +16,14 @@ export class ChatComponent implements OnInit {
   usersDMs2: any[];
   usersDMs11: any[];
   usersDMs22: any[];
-  mensajes: any[];
+  mensajes: any;
+
+  public newMsgForm = new FormGroup({
+    mensaje: new FormControl('', Validators.required),
+    id: new FormControl('')
+  });
+  documentoid: any;
+  mensajesall: any[];
 
   constructor(
     private firestoreService: UsuariosService,
@@ -28,6 +35,11 @@ export class ChatComponent implements OnInit {
   ngOnInit(): void {
     this.comprobarcookies();
     this.cargarDMs();
+
+    // NTROD
+    this.newMsgForm.setValue({
+      mensaje: ''
+    });
   }
   public comprobarcookies(){
     if (this.cookieService.get('myusername')){
@@ -41,7 +53,6 @@ export class ChatComponent implements OnInit {
 
   // Abre DM
   public newDM(datauser){
-
     let dataCrearDM = {
       username: datauser.username,
       myusername: this.myusername
@@ -104,15 +115,49 @@ export class ChatComponent implements OnInit {
       });
     }
 
+    //Recuperar mensajes
+
+    public getAllMsg(){
+
+    }
+
+    // Recupera los mensajes con la ID enviada
     public envioID(id){
-      this.firestoreService.getMensajes(id).subscribe((userSnapshot) => {
+      this.documentoid = id;
+      this.firestoreService.envioIDService(id).subscribe((userSnapshot) => {
         this.mensajes = [];
             this.mensajes.push({
               data: userSnapshot.payload.data()
             });
-        console.log(this.mensajes);
-        
+          console.log(this.mensajes)
       });
+
+    }
+
+    //Enviar mensaje
+    public newMsg(formData){
+     let data = {
+          id: this.documentoid,
+          username: this.myusername,
+          mensaje: formData.mensaje
+     } 
+      this.firestoreService.sendMsg(data)
+      this.recoverMsg(this.documentoid)
+    }
+
+    // Recupera los mensajes según la id
+    public recoverMsg(id){
+      this.documentoid = id;
+      this.firestoreService.getMsgAll(id).subscribe((userSnapshot) => {
+        this.mensajesall = [];
+        userSnapshot.forEach((userData: any) => {
+          this.mensajesall.push({
+            data: userData.payload.doc.data()
+          });
+        });
+        console.log(this.mensajesall)
+      });
+      
     }
 
   }

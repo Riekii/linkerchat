@@ -4,6 +4,7 @@
   
 <div class="container">
     <div class="row">
+
         <div class="col-4">
             <table class="table table-dark">
                 <tr *ngFor="let user of usersDMs11">
@@ -26,15 +27,20 @@
                 </tr>
             </table>
         </div>
+
+
         <div class="col-8">
-            <table class="table">
+            <table class="table" *ngFor="let mensaje of mensajesall">
                 <tr>
-                    <td>usuario</td>
-                    <td>mensaje</td>
+                    <td>{{ mensaje.data.username }}</td>
+                    <td>{{ mensaje.data.mensaje }}</td>
                 </tr>
             </table>
 
-            
+        <form (ngSubmit)="newMsg(newMsgForm.value)" [formGroup]="newMsgForm">
+            <input class="form-control" type="text" formControlName="mensaje" placeholder="Escribe aqui tu mensaje">
+            <input id="registrarse" type="submit" class="btn" value=""> 
+        </form> 
 
         </div>
     </div>
