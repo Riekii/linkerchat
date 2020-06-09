@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { UsuariosService } from '../../../services/firestore/usuarios.service'
 import { FormGroup, FormControl, Validators, SelectMultipleControlValueAccessor } from '@angular/forms';
 import { FallbackimagesDirective } from '../../../directives/fallbackimages.directive';
@@ -161,6 +161,7 @@ export class ChatComponent implements OnInit {
           mensaje: ''
         });
       });
+
     }
 
     // Recupera los mensajes según la id

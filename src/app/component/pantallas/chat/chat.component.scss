@@ -1,12 +1,22 @@
+.contenedor{
+    height: calc(100vh - 56px);
+}
+
 #tablachat{
-    max-height: 400px;
+    background: #525252;
+
+    height: calc(100vh - 150px);
     overflow: auto;
+
 }
 
 .mymessage{
     background: greenyellow;
+    text-align: right;
 }
 
 .hismessage{
     background: lightgrey;
+    text-align: left;
+    
 }

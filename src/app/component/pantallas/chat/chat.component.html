@@ -2,7 +2,7 @@
     <a class="navbar-brand" href="#">Logeado como: {{ myusername }}</a>
 </nav>
   
-<div class="container">
+<div class="container-fluid contenedor">
     <div class="row">
 
         <div class="col-4">
@@ -11,7 +11,7 @@
                     <td (click)="envioID(user.id)">
                         <p>Por mi</p>
                     </td>
-                    <td (click)="envioID(user.id)" class="username">
+                    <td (click)="envioID(user.id)" id="user.id" class="username">
                         <p *ngIf="user.data.username === myusername">{{ user.data.myusername }}</p>
                         <p *ngIf="user.data.myusername === myusername">{{ user.data.username }}</p>
                     </td>
@@ -20,7 +20,7 @@
                     <td (click)="envioID(user.id)">
                         <p>Por otro</p>
                     </td>
-                    <td (click)="envioID(user.id)" class="username">
+                    <td (click)="envioID(user.id)" id="user.id" class="username">
                         <p *ngIf="user.data.username === myusername">{{ user.data.myusername }}</p>
                         <p *ngIf="user.data.myusername === myusername">{{ user.data.username }}</p>
                     </td>
@@ -30,18 +30,18 @@
 
         <div class="col-8">
             <div id="tablachat" #scrollMe>
-                <table class="table" *ngFor="let mensaje of mensajesall">
-                    <tr *ngIf="mensaje.data.username === myusername">
-                        <td class="mymessage">{{ mensaje.data.username }}</td>
-                        <td class="mymessage">{{ mensaje.data.mensaje }}</td>
-                    </tr>
-                    <tr *ngIf="mensaje.data.username !== myusername">
-                        <td class="hismessage">{{ mensaje.data.username }}</td>
-                        <td class="hismessage">{{ mensaje.data.mensaje }}</td>
+                <table class="table">
+                    <tr *ngFor="let mensaje of mensajesall" >
+                        <!-- <td *ngIf="mensaje.data.username === myusername" class="mymessage">{{ mensaje.data.username }}</td> -->
+                        <td *ngIf="mensaje.data.username === myusername" class="mymessage">{{ mensaje.data.mensaje }}</td>
+
+                        <!-- <td *ngIf="mensaje.data.username !== myusername" class="hismessage">{{ mensaje.data.username }}</td> -->
+                        <td *ngIf="mensaje.data.username !== myusername" class="hismessage">{{ mensaje.data.mensaje }}</td>
+                   
                     </tr>
                 </table>
             </div>
-            <form (ngSubmit)="newMsg(newMsgForm.value)" [formGroup]="newMsgForm">
+            <form id="mensajeform" (ngSubmit)="newMsg(newMsgForm.value)" [formGroup]="newMsgForm">
                 <input class="form-control" type="text" formControlName="mensaje" placeholder="Escribe aqui tu mensaje">
                 <input id="registrarse" type="submit" class="btn" value=""> 
             </form> 
