@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { Observable, Timestamp } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -139,7 +139,8 @@ export class UsuariosService {
   public sendMsg(data: {
       id: string,
       username: string,
-      mensaje: string
+      mensaje: string,
+      date: number
   }){
     return this.firestore.collection(this.collectionmsg).add(data);
   }
@@ -150,8 +151,10 @@ export class UsuariosService {
       this.collectionmsg,
       ref => ref
       .where('id', '==', id)
+      .orderBy('date')
       ,
-      ).snapshotChanges();
+      )
+      .snapshotChanges();
     }
 
 

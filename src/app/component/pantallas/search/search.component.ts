@@ -79,7 +79,7 @@ export class SearchComponent implements OnInit {
     }
 
     // Comprobar que los DMs no estén creados ya
-    this.firestoreService.getDMs(this.myusername).subscribe((userSnapshot) => {
+    this.firestoreService.getDMs(this.myusername, datauser.username).subscribe((userSnapshot) => {
     this.usersDMs = [];
     userSnapshot.forEach((userData: any) => {
         this.usersDMs.push({
@@ -89,7 +89,7 @@ export class SearchComponent implements OnInit {
     });
   });
 
-  this.firestoreService.getDMs2(this.myusername).subscribe((userSnapshot) => {
+  this.firestoreService.getDMs2(this.myusername, datauser.username).subscribe((userSnapshot) => {
     this.usersDMs2 = [];
     userSnapshot.forEach((userData: any) => {
         this.usersDMs.push({
@@ -103,6 +103,8 @@ export class SearchComponent implements OnInit {
     if (this.usersDMs.length >= 1 || this.usersDMs2.length >= 1){
       // Si ya hay datos
       console.log('Ya hay datos')
+      console.log(this.usersDMs)
+      console.log(this.usersDMs2)
     }
     else{
        // Crear los DMs entre ambos usuarios

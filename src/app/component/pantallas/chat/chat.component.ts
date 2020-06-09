@@ -1,9 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { UsuariosService } from '../../../services/firestore/usuarios.service'
 import { FormGroup, FormControl, Validators, SelectMultipleControlValueAccessor } from '@angular/forms';
 import { FallbackimagesDirective } from '../../../directives/fallbackimages.directive';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import {formatDate} from '@angular/common';
+
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
@@ -24,6 +26,7 @@ export class ChatComponent implements OnInit {
   });
   documentoid: any;
   mensajesall: any[];
+  
 
   constructor(
     private firestoreService: UsuariosService,
@@ -31,6 +34,8 @@ export class ChatComponent implements OnInit {
     private cookieService: CookieService,
     private router: Router
   ) { }
+
+  @ViewChild('scrollMe') private myScrollContainer: ElementRef;
 
   ngOnInit(): void {
     this.comprobarcookies();
@@ -41,6 +46,7 @@ export class ChatComponent implements OnInit {
       mensaje: ''
     });
   }
+
   public comprobarcookies(){
     if (this.cookieService.get('myusername')){
       this.myusername = this.cookieService.get('myusername');
@@ -49,6 +55,12 @@ export class ChatComponent implements OnInit {
     else{
       this.router.navigate(['/login'])
     }
+    setTimeout(() => {
+            //Conseguir la fecha
+            const dateNowold = formatDate(new Date(), 'dd/MM/yyyy', 'en')
+            const dateNow = new Date().getTime() / 1000;
+            console.log(dateNow)
+    }, 500);
   }
 
   // Abre DM
@@ -118,7 +130,6 @@ export class ChatComponent implements OnInit {
     //Recuperar mensajes
 
     public getAllMsg(){
-
     }
 
     // Recupera los mensajes con la ID enviada
@@ -130,19 +141,26 @@ export class ChatComponent implements OnInit {
               data: userSnapshot.payload.data()
             });
           console.log(this.mensajes)
+          this.recoverMsg(id)
       });
-
     }
 
     //Enviar mensaje
     public newMsg(formData){
+
+    const dateNow = new Date().getTime() / 1000;
+
      let data = {
           id: this.documentoid,
           username: this.myusername,
-          mensaje: formData.mensaje
+          mensaje: formData.mensaje,
+          date: dateNow
      } 
-      this.firestoreService.sendMsg(data)
-      this.recoverMsg(this.documentoid)
+      this.firestoreService.sendMsg(data).then(() => {
+        this.newMsgForm.setValue({
+          mensaje: ''
+        });
+      });
     }
 
     // Recupera los mensajes según la id
@@ -155,9 +173,19 @@ export class ChatComponent implements OnInit {
             data: userData.payload.doc.data()
           });
         });
-        console.log(this.mensajesall)
       });
-      
     }
+
+    ngAfterViewChecked() {        
+      this.scrollToBottom();        
+  } 
+
+  scrollToBottom(): void {
+      try {
+          this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+      } catch(err) { }                 
+  }
+
+    
 
   }
