@@ -1,51 +1,42 @@
 <nav class="navbar navbar-light bg-light">
     <a class="navbar-brand" href="#">Logeado como: {{ myusername }}</a>
 </nav>
-  
+
 <div class="container-fluid contenedor">
     <div class="row">
 
-        <div class="col-4">
-            <table class="table table-dark">
-                <tr *ngFor="let user of usersDMs11">
-                    <td (click)="envioID(user.id)">
-                        <p>Por mi</p>
-                    </td>
-                    <td (click)="envioID(user.id)" id="user.id" class="username">
+        <div class="col-4 colleft">
+                <div class="userdiv" *ngFor="let user of usersDMs11">
+                    <div (click)="envioID(user.id, user.id)" id="{{ user.id }}" class="username noseleccionado">
+                        <!-- <p>{{ user.id }}</p> -->
                         <p *ngIf="user.data.username === myusername">{{ user.data.myusername }}</p>
                         <p *ngIf="user.data.myusername === myusername">{{ user.data.username }}</p>
-                    </td>
-                </tr> 
-                <tr *ngFor="let user of usersDMs22">
-                    <td (click)="envioID(user.id)">
-                        <p>Por otro</p>
-                    </td>
-                    <td (click)="envioID(user.id)" id="user.id" class="username">
+                    </div>
+                </div>
+                <div class="userdiv" *ngFor="let user of usersDMs22">
+                    <div (click)="envioID(user.id, user.id)" id="{{ user.id }}" class="username noseleccionado">
+                        <!-- <p>{{ user.id }}</p> -->
                         <p *ngIf="user.data.username === myusername">{{ user.data.myusername }}</p>
                         <p *ngIf="user.data.myusername === myusername">{{ user.data.username }}</p>
-                    </td>
-                </tr>
-            </table>
+                    </div>
+                </div>
         </div>
 
-        <div class="col-8">
+        <div class="col-8 colright">
             <div id="tablachat" #scrollMe>
-                <table class="table">
-                    <tr *ngFor="let mensaje of mensajesall" >
-                        <!-- <td *ngIf="mensaje.data.username === myusername" class="mymessage">{{ mensaje.data.username }}</td> -->
-                        <td *ngIf="mensaje.data.username === myusername" class="mymessage">{{ mensaje.data.mensaje }}</td>
+                <div *ngFor="let mensaje of mensajesall">
+                    <!-- <td *ngIf="mensaje.data.username === myusername" class="mymessage">{{ mensaje.data.username }}</td> -->
+                    <div *ngIf="mensaje.data.username === myusername" class="mymessage">{{ mensaje.data.mensaje }}</div>
 
-                        <!-- <td *ngIf="mensaje.data.username !== myusername" class="hismessage">{{ mensaje.data.username }}</td> -->
-                        <td *ngIf="mensaje.data.username !== myusername" class="hismessage">{{ mensaje.data.mensaje }}</td>
-                   
-                    </tr>
-                </table>
+                    <!-- <td *ngIf="mensaje.data.username !== myusername" class="hismessage">{{ mensaje.data.username }}</td> -->
+                    <div *ngIf="mensaje.data.username !== myusername" class="hismessage">{{ mensaje.data.mensaje }}</div>
+
+                </div>
             </div>
             <form id="mensajeform" (ngSubmit)="newMsg(newMsgForm.value)" [formGroup]="newMsgForm">
-                <input class="form-control" type="text" formControlName="mensaje" placeholder="Escribe aqui tu mensaje">
-                <input id="registrarse" type="submit" class="btn" value=""> 
-            </form> 
+                <input class="form-control" type="text" formControlName="mensaje"
+                    placeholder="Escribe aqui tu mensaje">
+                <input id="registrarse" type="submit" class="btn" value="">
+            </form>
         </div>
     </div>
-</div>
-

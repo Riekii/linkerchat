@@ -133,7 +133,7 @@ export class ChatComponent implements OnInit {
     }
 
     // Recupera los mensajes con la ID enviada
-    public envioID(id){
+    public envioID(id, docid){
       this.documentoid = id;
       this.firestoreService.envioIDService(id).subscribe((userSnapshot) => {
         this.mensajes = [];
@@ -143,6 +143,15 @@ export class ChatComponent implements OnInit {
           console.log(this.mensajes)
           this.recoverMsg(id)
       });
+      console.log(docid)
+      var usernames = document.getElementsByClassName('username');
+
+      for(var i=0; i< usernames.length; i++){
+          usernames[i].classList.add('noseleccionado')
+          usernames[i].classList.remove('seleccionado')
+      }
+      document.getElementById(docid).classList.remove('noseleccionado')
+      document.getElementById(docid).classList.add('seleccionado')
     }
 
     //Enviar mensaje
