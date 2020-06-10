@@ -24,13 +24,24 @@
 
         <div class="col-8 colright">
             <div id="tablachat" #scrollMe>
-                <div *ngFor="let mensaje of mensajesall">
-                    <!-- <td *ngIf="mensaje.data.username === myusername" class="mymessage">{{ mensaje.data.username }}</td> -->
-                    <div *ngIf="mensaje.data.username === myusername" class="mymessage">{{ mensaje.data.mensaje }}</div>
+                <div id="outchat">
+                    <div id="chat" class="chat" *ngFor="let mensaje of mensajesall">
+                        <!-- <td *ngIf="mensaje.data.username === myusername" class="mymessage">{{ mensaje.data.username }}</td> -->
+                        <div *ngIf="
+                        mensaje.data.username === myusername
+                        && mensaje.data.mensaje
+                        " class="mymessage">{{ mensaje.data.mensaje }}</div>
 
-                    <!-- <td *ngIf="mensaje.data.username !== myusername" class="hismessage">{{ mensaje.data.username }}</td> -->
-                    <div *ngIf="mensaje.data.username !== myusername" class="hismessage">{{ mensaje.data.mensaje }}</div>
+                        <!-- <td *ngIf="mensaje.data.username !== myusername" class="hismessage">{{ mensaje.data.username }}</td> -->
+                        <div *ngIf="
+                        mensaje.data.username !== myusername
+                        && mensaje.data.mensaje
+                        " class="hismessage">{{ mensaje.data.mensaje }}</div>
 
+                        <div *ngIf="!mensaje.data" class="nomensajeind">
+                            Sin mensajes
+                        </div>
+                    </div>
                 </div>
             </div>
             <form id="mensajeform" (ngSubmit)="newMsg(newMsgForm.value)" [formGroup]="newMsgForm">

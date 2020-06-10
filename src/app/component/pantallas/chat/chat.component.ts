@@ -140,7 +140,9 @@ export class ChatComponent implements OnInit {
             this.mensajes.push({
               data: userSnapshot.payload.data()
             });
-          console.log(this.mensajes)
+            setTimeout(() => {
+              document.getElementById('outchat').style.opacity = '1'
+            }, 200);
           this.recoverMsg(id)
       });
       console.log(docid)
@@ -152,6 +154,11 @@ export class ChatComponent implements OnInit {
       }
       document.getElementById(docid).classList.remove('noseleccionado')
       document.getElementById(docid).classList.add('seleccionado')
+
+      // document.getElementById('mensajeform').style.visibility = 'show';
+      document.getElementById('mensajeform').style.opacity = '1';
+
+     
     }
 
     //Enviar mensaje
@@ -165,9 +172,9 @@ export class ChatComponent implements OnInit {
           mensaje: formData.mensaje,
           date: dateNow
      } 
-      this.firestoreService.sendMsg(data).then(() => {
-        this.newMsgForm.setValue({
-          mensaje: ''
+    this.firestoreService.sendMsg(data).then(() => {
+      this.newMsgForm.setValue({
+        mensaje: ''
         });
       });
 

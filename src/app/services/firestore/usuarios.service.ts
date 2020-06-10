@@ -135,6 +135,10 @@ export class UsuariosService {
       .snapshotChanges();
   }
 
+
+
+
+  
   // Enviar mensaje
   public sendMsg(data: {
       id: string,
