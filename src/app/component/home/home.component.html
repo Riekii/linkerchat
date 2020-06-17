@@ -1,14 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">Stormi</a>
+  
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+            <a class="nav-link" href="#">
+                <img class="chat-icon" src="../../../assets/imagenes/home/chat-icon.png">
+                <img class="ojo" src="../../../assets/imagenes/home/ojo.png">
+                <img class="user" src="../../../assets/imagenes/home/user.png">
+            </a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Disabled</a> 
+        </li>-->
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+
 <div class="container body">
     <div class="row-fluid">
         <div class="col-12">
             <div class="imagenconfondo" *ngFor="let user of users">
-                <div class="nombre">
-                    <h1>
-                    {{ user.data.username }}
-                    </h1>
+                <div class="nubeconlluvia">
                 </div>
-                <img class="img-responsive imagenperfil" *ngIf="user.data.imagen" src="{{user.data.imagen}}"/>
-                <img class="img-responsive imagenperfil" *ngIf="!user.data.imagen" src="../../../../assets/imagenes/createuser/userdefault.png"/>
             </div>
         </div>
     </div>
