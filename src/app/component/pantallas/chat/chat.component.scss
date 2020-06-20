@@ -1,5 +1,8 @@
 .contenedor{
-    height: calc(100vh - 56px);
+    // height: calc(100vh - 56px);
+
+    margin: 0;
+    padding: 0;
 }
 
 #tablachat{
@@ -48,8 +51,10 @@
 
 .colleft{
     padding-right: 0px;
+    margin: 0;
+    padding: 0;
     .userdiv{
-        padding-left: 5px;
+        padding-left: 0;
 
         cursor: pointer;
 
@@ -61,6 +66,8 @@
 }
 .colright{
     padding-left: 0px;
+    margin: 0;
+    padding: 0;
 }
 
 .seleccionado, .noseleccionado{
@@ -85,6 +92,15 @@
 }
 
 #mensajeform{
+    width: 90%;
+
+    position: absolute;
+    bottom: -110px;
+
+    margin: 0 auto;
+    margin-left: 5px;
+    
+
     // visibility: hidden;
     opacity: 0;
 

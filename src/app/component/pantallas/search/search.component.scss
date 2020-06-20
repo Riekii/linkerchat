@@ -1,3 +1,5 @@
+
+
 h1{
     display: block;
     margin: 0 auto;
@@ -17,7 +19,7 @@ table{
     td{
         vertical-align: middle;
         p{
-            font-size: 1.6em;
+            font-size: 1em;
         }
     }
     td.imgprof{
@@ -32,5 +34,13 @@ table{
     }
 }
 
+.body{
+    margin: 0;
+    padding: 0;
+    .columna{
+        margin: 0;
+        padding: 0;
+    }
+}
 
 

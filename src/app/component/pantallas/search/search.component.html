@@ -1,10 +1,6 @@
-<nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="#">Logeado como: {{ myusername }}</a>
-  </nav>
-
-<div class="container-fluid">
-    <div class="row-flex">
-        <div class="col-12">
+<div class="container-fluid body">
+    <div class="row">
+        <div class="col-12 columna">
             <h1>Búsqueda</h1>
             <form *ngIf="!introducido" (ngSubmit)="cargaLista(newDMForm.value)" [formGroup]="newDMForm">
                 <input class="form-control form-control-lg" type="text" formControlName="username" placeholder="Nombre de usuario">

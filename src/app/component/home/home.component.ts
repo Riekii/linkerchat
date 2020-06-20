@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.comprobarcookies();
 
+    this.openchat();
   }
 
   public comprobarcookies(){
@@ -58,8 +59,13 @@ export class HomeComponent implements OnInit {
     const chatdiv = document.getElementById('chatdiv');
 
     ojodiv.style.opacity = '0';
+    ojodiv.style.display = 'none';
+
     userdiv.style.opacity = '0';
+    userdiv.style.display = 'none';
+
     chatdiv.style.opacity = '1';
+    chatdiv.style.display = 'block'
   }
   public openuser(){
     const ojodiv = document.getElementById('ojodiv');
@@ -67,8 +73,13 @@ export class HomeComponent implements OnInit {
     const chatdiv = document.getElementById('chatdiv');
 
     ojodiv.style.opacity = '0';
+    ojodiv.style.display = 'none';
+
     chatdiv.style.opacity = '0';
+    chatdiv.style.display = 'none';
+
     userdiv.style.opacity = '1';
+    userdiv.style.display = 'block';
   }
   public openojo(){
     const ojodiv = document.getElementById('ojodiv');
@@ -76,8 +87,13 @@ export class HomeComponent implements OnInit {
     const chatdiv = document.getElementById('chatdiv');
 
     userdiv.style.opacity = '0';
+    userdiv.style.display = 'none';
+
     chatdiv.style.opacity = '0';
+    chatdiv.style.display = 'none';
+
     ojodiv.style.opacity = '1'; 
+    ojodiv.style.display = 'block';
   }
 
 }
