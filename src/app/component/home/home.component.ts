@@ -15,6 +15,8 @@ export class HomeComponent implements OnInit {
   public currentStatus = 1;
   public loaded: boolean;
 
+
+
   constructor(
     private firestoreService: UsuariosService,
     private cookieService: CookieService,
@@ -48,6 +50,34 @@ export class HomeComponent implements OnInit {
         });
       })
     });
+  }
+
+  public openchat(){
+    const ojodiv = document.getElementById('ojodiv');
+    const userdiv = document.getElementById('userdiv');
+    const chatdiv = document.getElementById('chatdiv');
+
+    ojodiv.style.opacity = '0';
+    userdiv.style.opacity = '0';
+    chatdiv.style.opacity = '1';
+  }
+  public openuser(){
+    const ojodiv = document.getElementById('ojodiv');
+    const userdiv = document.getElementById('userdiv');
+    const chatdiv = document.getElementById('chatdiv');
+
+    ojodiv.style.opacity = '0';
+    chatdiv.style.opacity = '0';
+    userdiv.style.opacity = '1';
+  }
+  public openojo(){
+    const ojodiv = document.getElementById('ojodiv');
+    const userdiv = document.getElementById('userdiv');
+    const chatdiv = document.getElementById('chatdiv');
+
+    userdiv.style.opacity = '0';
+    chatdiv.style.opacity = '0';
+    ojodiv.style.opacity = '1'; 
   }
 
 }

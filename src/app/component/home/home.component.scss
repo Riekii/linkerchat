@@ -1,64 +1,87 @@
-.body{
-    height: 100vh;
-    .imagenconfondo{
-        width: 100%;
-        .imagenperfil{
-            display: block;
+@media (max-width: 1024px) {
+    .body{
+        height: 100vh;
+        .imagenconfondo{
+            width: 100%;
+            .imagenperfil{
+                display: block;
 
-            max-height:300px;
-            width: auto;
+                max-height:300px;
+                width: auto;
 
+                margin: 0 auto;
+
+                border-radius: 10px;
+            }
+        }
+        .nombre{
+            position: relative;
             margin: 0 auto;
-
-            border-radius: 10px;
+            display: block;
+            text-align: center;
         }
     }
-    .nombre{
-        position: relative;
-        margin: 0 auto;
-        display: block;
+
+    .nubeconlluvia{
+        .nube{
+            display: block;
+            margin: 0 auto;
+            margin-top: -80px;
+            /* margin: 0 auto; */
+            width: 50%;
+            height: auto;
+        }
+        .lluvia{
+            display: block;
+            margin: 0 auto;
+            margin-top: -100px;
+            /* margin: 0 auto; */
+            width: 50%;
+            height: auto;
+        }
+    }
+
+    h1.title{
         text-align: center;
+        font-size: 4em;
     }
-}
 
-.nubeconlluvia{
-    .nube{
-        display: block;
-        margin: 0 auto;
-        margin-top: -80px;
-        /* margin: 0 auto; */
-        width: 50%;
-        height: auto;
-    }
-    .lluvia{
-        display: block;
-        margin: 0 auto;
-        margin-top: -100px;
-        /* margin: 0 auto; */
-        width: 50%;
-        height: auto;
-    }
-}
+    .navbarme{
+        background-color:#808080;
 
-h1.title{
-    text-align: center;
-    font-size: 4em;
-}
+        position: absolute;
+        bottom: 0;
 
-nav.navbar{
-    .chat-icon{
-        max-height: 70px;
-        margin-top: -15px;
-        margin-bottom: -15px;
+        ul.navbar-nav{
+            margin-top: 0px !important;
+        }
+        li{
+            display: inherit;
+        }
+
+        // Iconos
+        .chat-icon, .ojo, .user{
+            display: block;
+            margin: 0 auto;
+        }
+        .chat-icon{
+            max-height: 70px;
+        }
+        .ojo{
+            max-height: 60px;
+            margin-top: 4px;
+        }
+        .user{
+            max-height: 60px;
+        }
     }
-    .ojo{
-        max-height: 60px;
-        margin-top: -15px;
-        margin-bottom: -15px;
+
+
+    #chatdiv, #ojodiv, #userdiv{
+
+        border: solid 1px black;
     }
-    .user{
-        max-height: 60px;
-        margin-top: -10px;
-        margin-bottom: -10px;
-    }
+    #chatdiv{}
+    #ojodiv{}
+    #userdiv{}
 }
