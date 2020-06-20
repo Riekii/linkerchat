@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.comprobarcookies();
 
-    this.openchat();
+    this.openojo();
   }
 
   public comprobarcookies(){

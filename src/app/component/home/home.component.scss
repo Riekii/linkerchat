@@ -49,7 +49,7 @@
     .navbarme{
         background-color:#808080;
 
-        position: absolute;
+        position: fixed;
         bottom: 0;
 
         ul.navbar-nav{
@@ -85,6 +85,11 @@
         height: calc(100vh - 86px);
     }
     #chatdiv{}
-    #ojodiv{}
+    #ojodiv{
+        .col-12{
+            margin: 0;
+            padding: 0;
+        }
+    }
     #userdiv{}
 }

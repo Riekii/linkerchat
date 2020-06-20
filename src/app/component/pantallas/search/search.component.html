@@ -1,4 +1,4 @@
-<div class="container-fluid body">
+<div class="container-fluid">
     <div class="row">
         <div class="col-12 columna">
             <h1>Búsqueda</h1>
@@ -10,19 +10,14 @@
     </div>
     <div class="containtable">
         <table class="table table-dark">
-            <tr *ngFor="let user of usersc">
+            <tr *ngFor="let user of usersc" (click)="newDM(user.data)">
                 <td class="imgprof">
                     <img class="img-responsive imagenperfil" *ngIf="user.data.imagen" src="{{user.data.imagen}}" />
                     <img class="img-responsive imagenperfil" *ngIf="!user.data.imagen" src="../../../../assets/imagenes/createuser/userdefault.png" />
                 </td>
                 <td class="username">
                     <p>{{ user.data.username }}</p>
-                </td>
-                <td class="mail">
                     <p>{{ user.data.mail }}</p>
-                </td>
-                <td class="dm">
-                    <img (click)="newDM(user.data)" class="img-responsive imagenperfil" src="../../../../assets/imagenes/search/dm.png" />
                 </td>
             </tr>
         </table>
