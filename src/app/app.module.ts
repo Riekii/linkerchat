@@ -23,6 +23,7 @@ import { ProfileComponent } from './component/pantallas/profile/profile.componen
 import { SearchComponent } from './component/pantallas/search/search.component';
 import { ChatComponent } from './component/pantallas/chat/chat.component';
 import { NavbarComponent } from './component/shared/navbar/navbar.component';
+import { IndexComponent } from './component/index/index.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { NavbarComponent } from './component/shared/navbar/navbar.component';
     ProfileComponent,
     SearchComponent,
     ChatComponent,
-    NavbarComponent
+    NavbarComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,

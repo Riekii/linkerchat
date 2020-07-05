@@ -1,14 +1,14 @@
 <div class="container-fluid">
     <div class="row">
-      <div class="col-0 col-md-1 col-lg-2"></div>
+      <!-- <div class="col-0 col-md-1 col-lg-2"></div> -->
       <div class="col-12 col-md-10 col-lg-8">
         <form *ngIf="!introducido" (ngSubmit)="loginUser(loginUserForm.value)" [formGroup]="loginUserForm">
           <input type="hidden" formControlName="id">
         
-          <img id="userdefault" class="img-fluid" src="{{ imagen }}" default="../../../../assets/imagenes/createuser/userdefault.png">
+          <!-- <img id="userdefault" class="img-fluid" src="{{ imagen }}" default="../../../../assets/imagenes/createuser/userdefault.png"> -->
           
-          <input class="form-control" type="text" formControlName="username" placeholder="Nombre de usuario">
-          <input class="form-control" type="password" formControlName="password" placeholder="Contraseña">
+          <input class="form-control-lg" type="text" formControlName="username" placeholder="Nombre de usuario">
+          <input class="form-control-lg" type="password" formControlName="password" placeholder="Contraseña">
 
           <div *ngIf="loaded === true && goodlogin === true" class="goodlogin">
             <div *ngFor="let user of users">
@@ -36,6 +36,6 @@
         </div> -->
   
       </div>
-      <div class="col-0 col-md-1 col-lg-2"></div>
+      <!-- <div class="col-0 col-md-1 col-lg-2"></div> -->
     </div>
   </div>

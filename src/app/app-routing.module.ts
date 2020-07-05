@@ -6,6 +6,7 @@ import { LoginComponent } from './component/pantallas/login/login.component';
 import { ProfileComponent } from './component/pantallas/profile/profile.component';
 import { SearchComponent } from './component/pantallas/search/search.component';
 import { ChatComponent } from './component/pantallas/chat/chat.component';
+import { IndexComponent } from './component/index/index.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'search', component: SearchComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'chat', component: ChatComponent },
-  { path: '', redirectTo: '/creauser', pathMatch: 'full' },
+  { path: 'index', component: IndexComponent },
+  { path: '', redirectTo: '/index', pathMatch: 'full' },
 ];
 
 @NgModule({
