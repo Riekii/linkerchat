@@ -19,7 +19,7 @@ export class IndexComponent implements OnInit {
     const nube = document.getElementById('nube');
     nube.style.opacity = '1';
     setTimeout(() => {
-      nube.style.marginTop = '-100px';
+      nube.style.marginTop = '-90px';
       nube.style.transition = '2s';
 
       this.mostrarregistro();

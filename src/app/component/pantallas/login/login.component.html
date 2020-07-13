@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row">
       <!-- <div class="col-0 col-md-1 col-lg-2"></div> -->
-      <div class="col-12 col-md-10 col-lg-8">
+      <div class="col-12">
         <form *ngIf="!introducido" (ngSubmit)="loginUser(loginUserForm.value)" [formGroup]="loginUserForm">
           <input type="hidden" formControlName="id">
         
@@ -10,21 +10,24 @@
           <input class="form-control-lg" type="text" formControlName="username" placeholder="Nombre de usuario">
           <input class="form-control-lg" type="password" formControlName="password" placeholder="Contraseña">
 
+          <input id="iniciarbutton" type="submit" class="btn" [disabled]="!loginUserForm.valid" value=""> 
+
           <div *ngIf="loaded === true && goodlogin === true" class="goodlogin">
             <div *ngFor="let user of users">
-              <p>Usuario logeado con éxito</p>
+              <img class="mano" src="../../../../assets/imagenes/login/manoarriba.png">
+              <!-- <p class="pacierto"></p> -->
             </div>
           </div>
 
           <div *ngIf="loaded === true && goodlogin === false" class="badlogin">
-              <p>Usuario o contraseña fallida</p>
+            <img class="mano" src="../../../../assets/imagenes/login/manoabajo.png">
+            <!-- <p class="pfallo"></p> -->
           </div>
 
           <div *ngIf="loaded === false" class="loading">
-            <p>Cargando</p>
+            <img class="cargando" src="../../../../assets/imagenes/login/cargando.png">
+            <!-- <p class="pcargando"></p> -->
           </div>
-
-          <input id="iniciarbutton" type="submit" class="btn" [disabled]="!loginUserForm.valid" value=""> 
         </form>
   
         <!-- <div *ngIf="introducido === true">

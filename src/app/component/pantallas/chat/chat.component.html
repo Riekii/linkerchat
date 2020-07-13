@@ -1,7 +1,7 @@
 <div class="container-fluid contenedor">
     <div class="row">
 
-        <div class="col-4 colleft">
+        <div id="colleft" class="col-8 colleft">
                 <div class="userdiv" *ngFor="let user of usersDMs11">
                     <div (click)="envioID(user.id, user.id)" id="{{ user.id }}" class="username noseleccionado">
                         <!-- <p>{{ user.id }}</p> -->
@@ -18,7 +18,7 @@
                 </div>
         </div>
 
-        <div class="col-8 colright">
+        <div id="colright" class="col-4 colright">
             <div id="tablachat" #scrollMe>
                 <div id="outchat">
                     <div id="chat" class="chat" *ngFor="let mensaje of mensajesall">

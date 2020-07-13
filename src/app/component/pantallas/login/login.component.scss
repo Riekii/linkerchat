@@ -1,6 +1,6 @@
 // FORMULARIO
 .form-control-lg{
-    max-width: 300px;
+    width: 100%;
     
     margin: 0 auto;
 
@@ -88,8 +88,8 @@
 }
 
 #iniciarbutton{
-    width: 290px !important;
-    height: 70px !important;
+    width: 240px !important;
+    height: 60px !important;
 
     background-image: url(../../../../assets/botones/login.png);
     background-repeat: no-repeat;
@@ -101,11 +101,9 @@
     animation: none;
     transition: 0s;
 
-    position: absolute;
+    position: relative;
     margin: 0 auto;
-    
-    margin-left: 10px;
-
+    display: block;
    
     &:hover{
         background-size: cover;
@@ -119,4 +117,37 @@
         transition: 0.5s;
     }
 } 
+
+// Manos
+.mano{
+    width: 100px;
+    height: auto;
+
+    margin: 0 auto;
+    margin-top: 10px;
+    }
+.cargando{
+    max-width: 100%;
+    width: 100px;
+    height: auto;
+
+    margin: 0 auto;
+    }
+
+
+// .pacierto, .pfallo{
+//     margin-top: -10px;
+// }
+// .pacierto{
+//     color: #15780c;
+//     }
+// .pfallo{
+//     color: #9e1616;
+//     }
+// .pcargando{
+//     color: #9e7016;
+//     }
+
+
+
 }
