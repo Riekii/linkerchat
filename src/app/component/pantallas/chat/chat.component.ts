@@ -5,6 +5,9 @@ import { FallbackimagesDirective } from '../../../directives/fallbackimages.dire
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import {formatDate} from '@angular/common';
+import * as Hammer from 'hammerjs';
+import { HammerGestureConfig, HAMMER_GESTURE_CONFIG, HammerModule } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-chat',
@@ -12,6 +15,8 @@ import {formatDate} from '@angular/common';
   styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent implements OnInit {
+  pan: { direction: Hammer.DIRECTION_ALL };
+  swipe: { direction: Hammer.DIRECTION_VERTICAL };
   myusername: string;
   usersc: any[];
   usersDMs: any[];
@@ -32,7 +37,8 @@ export class ChatComponent implements OnInit {
     private firestoreService: UsuariosService,
     public FallbackimagesDirective: FallbackimagesDirective,
     private cookieService: CookieService,
-    private router: Router
+    private router: Router,
+    private Hammer: HammerModule
   ) { }
 
   @ViewChild('scrollMe') private myScrollContainer: ElementRef;
@@ -158,7 +164,9 @@ export class ChatComponent implements OnInit {
       // document.getElementById('mensajeform').style.visibility = 'show';
       document.getElementById('mensajeform').style.opacity = '1';
 
-     
+      setTimeout(() => {
+        this.onSwipeLeft('l')
+      }, 100);
     }
 
     //Enviar mensaje
@@ -203,6 +211,55 @@ export class ChatComponent implements OnInit {
       } catch(err) { }                 
   }
 
+  public onSwipe(event){
+    console.log('swipe');
+  }
+  public onSwipeLeft(event){
+    console.log('left')
+
+    const colleft = document.getElementById('colleft');
+    const colright = document.getElementById('colright');
+    const mensajeform = document.getElementById('mensajeform');
+
+    colleft.classList.remove;
+    colright.classList.remove;
+
+    colright.classList.remove('col-0');
+    colleft.classList.remove('col-12');
+
+    colleft.classList.add('col-0');
+    colleft.classList.add('colleft');
+    colright.classList.add('col-12');
+    colright.classList.add('colright');
+
+    colleft.style.display = 'none';
+    colright.style.display = 'block';
+    mensajeform.style.display = 'block';
+
+    
+  }
+  public onSwipeRight(event){
+    console.log('right')
+
+    const colleft = document.getElementById('colleft');
+    const colright = document.getElementById('colright');
+    const mensajeform = document.getElementById('mensajeform');
+
+    colright.classList.remove;
+    colleft.classList.remove;
+    colleft.classList.remove('col-0');
+    colright.classList.remove('col-12');
+
+    colright.classList.add('col-0');
+    colright.classList.add('colright');
+    colleft.classList.add('col-12');
+    colleft.classList.add('colleft');
+
+    colright.style.display = 'none';
+    colleft.style.display = 'block';
+    mensajeform.style.display = 'none';
+
+  }
     
 
   }

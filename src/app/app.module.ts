@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HammerModule, HammerGestureConfig } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -25,6 +25,8 @@ import { ChatComponent } from './component/pantallas/chat/chat.component';
 import { NavbarComponent } from './component/shared/navbar/navbar.component';
 import { IndexComponent } from './component/index/index.component';
 
+import 'hammerjs'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +46,8 @@ import { IndexComponent } from './component/index/index.component';
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
     NgbModule,
+
+    HammerModule,
 
     FormsModule,
     ReactiveFormsModule

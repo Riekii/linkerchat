@@ -8,11 +8,10 @@
 #tablachat{
     background: #525252;
 
-    height: calc(100vh - 200px);
+    height: calc(100vh - 150px);
     margin-bottom: 20px;
 
     overflow: auto;
-
 }
 
 .mymessage, .hismessage{
@@ -49,6 +48,11 @@
     padding-right: 5px;
 }
 
+#colleft, #colright{
+    transition: 0.5s ease-in-out;
+    
+}
+
 #colleft{
     padding-right: 0px;
     margin: 0;
@@ -69,7 +73,7 @@
     margin: 0;
     padding: 0;
 
-    visibility: hidden;
+    // visibility: hidden;
 }
 
 .seleccionado, .noseleccionado{
@@ -86,7 +90,7 @@
 .noseleccionado{
     background: #6F6F6F;
 
-    margin-right: 30px;
+    // margin-right: 30px;
 }
 
 .nomensajeid{
@@ -94,20 +98,21 @@
 }
 
 #mensajeform{
-    width: 90%;
+    display: none;
+    width: calc(100% - 50px);
 
     position: absolute;
-    bottom: -110px;
+    bottom: -70px;
 
     margin: 0 auto;
     margin-left: 5px;
     
 
     // visibility: hidden;
-    opacity: 0;
+    // opacity: 0;
 
-    animation: ease-in-out;
-    transition: 0.5s;
+    // animation: ease-in-out;
+    // transition: 0.5s;
 }
 #outchat{
     // visibility: hidden;
