@@ -104,9 +104,9 @@ export class UsuariosService {
         .where('username', '==', username)
         ,
         ).snapshotChanges();
-    }
-      
+    } 
   }
+
   public getDMs2( myusername: string, username?) {
     if (!username){
       return this.firestore.collection(

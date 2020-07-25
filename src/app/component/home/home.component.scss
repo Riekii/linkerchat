@@ -77,12 +77,16 @@
     }
 
     // divs
+    #divchat, #divojo, #divuser{
+        transition: ease-in-out 0.2s;
+    } 
     #chatdiv, #ojodiv, #userdiv{
         position: absolute;
         top: 0px;
 
         // Cambiar tamaño
         height: calc(100vh - 86px);
+
     }
     #chatdiv{}
     #ojodiv{

@@ -8,7 +8,7 @@
 #tablachat{
     background: #525252;
 
-    height: calc(100vh - 150px);
+    height: calc(100vh - 190px);
     margin-bottom: 20px;
 
     overflow: auto;
@@ -120,4 +120,20 @@
 
     animation: ease-in-out;
     transition: 0.5s;
+}
+
+.nombrecontacto{
+    
+    p{
+        margin: 7px;
+        
+    }
+}
+
+.col-0{
+    display: none;
+}
+
+.col-12{
+    display: block;
 }

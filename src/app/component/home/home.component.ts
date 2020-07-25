@@ -58,6 +58,14 @@ export class HomeComponent implements OnInit {
     const userdiv = document.getElementById('userdiv');
     const chatdiv = document.getElementById('chatdiv');
 
+    const divchat = document.getElementById('divchat');
+    const divuser = document.getElementById('divuser');
+    const divojo = document.getElementById('divojo');
+
+    divchat.style.backgroundColor = '#525252';
+    divuser.style.backgroundColor = '#808080';
+    divojo.style.backgroundColor = '#808080';
+
     ojodiv.style.opacity = '0';
     ojodiv.style.display = 'none';
 
@@ -65,12 +73,22 @@ export class HomeComponent implements OnInit {
     userdiv.style.display = 'none';
 
     chatdiv.style.opacity = '1';
-    chatdiv.style.display = 'block'
+    chatdiv.style.display = 'block';
+
+
   }
   public openuser(){
     const ojodiv = document.getElementById('ojodiv');
     const userdiv = document.getElementById('userdiv');
     const chatdiv = document.getElementById('chatdiv');
+
+    const divchat = document.getElementById('divchat');
+    const divuser = document.getElementById('divuser');
+    const divojo = document.getElementById('divojo');
+
+    divchat.style.backgroundColor = '#808080';
+    divuser.style.backgroundColor = '#525252';
+    divojo.style.backgroundColor = '#808080';
 
     ojodiv.style.opacity = '0';
     ojodiv.style.display = 'none';
@@ -85,6 +103,14 @@ export class HomeComponent implements OnInit {
     const ojodiv = document.getElementById('ojodiv');
     const userdiv = document.getElementById('userdiv');
     const chatdiv = document.getElementById('chatdiv');
+
+    const divchat = document.getElementById('divchat');
+    const divuser = document.getElementById('divuser');
+    const divojo = document.getElementById('divojo');
+
+    divchat.style.backgroundColor = '#808080';
+    divuser.style.backgroundColor = '#808080';
+    divojo.style.backgroundColor = '#525252';
 
     userdiv.style.opacity = '0';
     userdiv.style.display = 'none';

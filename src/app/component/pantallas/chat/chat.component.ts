@@ -31,6 +31,7 @@ export class ChatComponent implements OnInit {
   });
   documentoid: any;
   mensajesall: any[];
+  nombrecontacto: any;
   
 
   constructor(
@@ -147,11 +148,17 @@ export class ChatComponent implements OnInit {
               data: userSnapshot.payload.data()
             });
             setTimeout(() => {
-              document.getElementById('outchat').style.opacity = '1'
+              document.getElementById('outchat').style.opacity = '1';
+              console.log(this.nombrecontacto)
             }, 200);
           this.recoverMsg(id)
+           if (this.mensajes[0].data.myusername === this.myusername){
+                this.nombrecontacto = this.mensajes[0].data.username
+              }
+            if (this.mensajes[0].data.username === this.myusername){
+              this.nombrecontacto = this.mensajes[0].data.myusername
+            }
       });
-      console.log(docid)
       var usernames = document.getElementsByClassName('username');
 
       for(var i=0; i< usernames.length; i++){
@@ -185,7 +192,6 @@ export class ChatComponent implements OnInit {
         mensaje: ''
         });
       });
-
     }
 
     // Recupera los mensajes según la id
@@ -260,6 +266,4 @@ export class ChatComponent implements OnInit {
     mensajeform.style.display = 'none';
 
   }
-    
-
-  }
+}

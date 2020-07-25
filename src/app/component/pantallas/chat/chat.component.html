@@ -26,10 +26,15 @@
         (swipeleft)="onSwipeLeft($event)"
         (swiperight)="onSwipeRight($event)"
         >
+
+        <div class="nombrecontacto">
+            <p>{{nombrecontacto}}</p>
+        </div>
             <div id="tablachat" #scrollMe
             (swipe)="onSwipe($event)"
             (swipeleft)="onSwipeLeft($event)"
             (swiperight)="onSwipeRight($event)">
+
                 <div id="outchat">
                     <div id="chat" class="chat" *ngFor="let mensaje of mensajesall">
                         <!-- <td *ngIf="mensaje.data.username === myusername" class="mymessage">{{ mensaje.data.username }}</td> -->
@@ -47,6 +52,7 @@
                         <div *ngIf="!mensaje.data" class="nomensajeind">
                             Sin mensajes
                         </div>
+
                     </div>
                 </div>
             </div>
